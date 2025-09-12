@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valenco Guelere e Silva – GameDev Portfolio</title>
+    <meta name="description" content="Valenco Guelere e Silva – Gameplay Programmer & GameDev. Projects, skills, experience and contact." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1220; /* deeper blue-black */
+            --bg-soft: #0f1725; /* section background */
+            --muted: #1b2534; /* subtle borders */
+            --card: #0f1621; /* cards */
+            --text: #e6edf3;
+            --text-dim: #b5c0cc;
+            --brand: #22d3ee; /* cyan accent */
+            --accent: #8b5cf6;
+            --brand-blue: #2563eb; /* bright link/buttons */
+            --text-copy-blue: #93c5fd; /* paragraph color */
+            --ok: #22c55e;
+            --warn: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 12px 36px rgba(0,0,0,.45);
+        }
+
+        [data-theme="light"] {
+            --bg: #f6f7fb;
+            --bg-soft: #eef1f6;
+            --muted: #dde3ed;
+            --card: #ffffff;
+            --text: #0b1220;
+            --text-dim: #424b5e;
+            --brand: #0ea5e9;
+            --accent: #7c3aed;
+            --text-copy-blue: #334155;
+            --brand-blue: #1d4ed8;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+            scroll-behavior: smooth
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            border-radius: 12px
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: linear-gradient(to bottom,rgba(11,15,20,.9),rgba(11,15,20,.6),transparent)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: 800;
+            letter-spacing: .3px
+        }
+
+        .brand-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg,var(--brand),var(--accent));
+            box-shadow: var(--shadow)
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
+
+            .nav-links a {
+                padding: 8px 12px;
+                border-radius: 10px
+            }
+
+                .nav-links a:hover {
+                    background: var(--muted)
+                }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px solid var(--muted);
+            font-size: 12px;
+            color: var(--text-dim)
+        }
+
+        .hero {
+            position: relative;
+            padding: 80px 0 40px
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px
+        }
+
+        .grid-2 {
+            grid-template-columns: 1.3fr 1fr
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--muted);
+            border-radius: 18px;
+            box-shadow: var(--shadow)
+        }
+
+            .card.pad {
+                padding: 22px
+            }
+
+        .title-xl {
+            font-size: 48px;
+            line-height: 1.05;
+            margin: 10px 0
+        }
+
+        .title-md {
+            font-size: 22px;
+            margin: 0 0 10px
+        }
+
+        .muted {
+            color: var(--text-dim)
+        }
+        /* paragraph tone */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--muted);
+            background: var(--bg-soft);
+            cursor: pointer
+        }
+
+            .btn.primary {
+                background: linear-gradient(135deg,var(--brand),var(--accent));
+                color: #0b0f14;
+                border: none
+            }
+
+            .btn.ghost {
+                background: transparent
+            }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(37,99,235,.40);
+            color: var(--brand-blue);
+            font-weight: 700
+        }
+
+            .btn-outline:hover {
+                background: rgba(37,99,235,.10);
+                border-color: rgba(37,99,235,.65)
+            }
+        /* Blue links inside cards */
+        .card a:not(.btn) {
+            color: inherit
+        }
+
+            .card a:not(.btn):hover {
+                text-decoration: underline
+            }
+
+        .links-row {
+            margin-top: 14px
+        }
+
+        #about .card a:not(.btn) {
+            color: var(--brand-blue)
+        }
+
+            #about .card a:not(.btn):hover {
+                text-decoration: underline
+            }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .badge {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px dashed var(--muted);
+            font-size: 12px
+        }
+
+        section {
+            padding: 36px 0
+        }
+
+        /* Section header with rule */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0 18px
+        }
+
+            .section-title .section-h {
+                font-size: 34px;
+                font-weight: 800;
+                margin: 0
+            }
+
+            .section-title .rule {
+                flex: 1;
+                height: 2px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, rgba(34,211,238,.9) 0%, rgba(37,99,235,.55) 45%, rgba(0,0,0,0) 100%)
+            }
+
+        .kpi {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px
+        }
+
+            .kpi .item {
+                padding: 16px;
+                border-radius: 12px;
+                background: var(--bg-soft);
+                border: 1px solid var(--muted)
+            }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 14px
+        }
+
+        .skill {
+            padding: 14px;
+            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--muted)
+        }
+
+        /* Projects & Skills fancy cards */
+        .skillgrid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px
+        }
+
+        .skillcard {
+            padding: 20px;
+            border-radius: 18px;
+            background: radial-gradient(120% 120% at 0% 0%, rgba(34,211,238,.08) 0%, rgba(0,0,0,0) 40%), var(--card);
+            border: 1px solid #223044;
+            box-shadow: 0 10px 28px rgba(2,6,23,.45), inset 0 0 0 1px rgba(34,211,238,.06)
+        }
+
+            .skillcard h3 {
+                margin: 0 0 10px;
+                font-size: 18px
+            }
+
+            .skillcard p {
+                margin: 0;
+                color: var(--text-dim)
+            }
+
+        .projgrid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px
+        }
+
+        .projcard {
+            padding: 18px;
+            border-radius: 18px;
+            background: radial-gradient(140% 140% at 100% 0%, rgba(37,99,235,.06) 0%, rgba(0,0,0,0) 42%), var(--card);
+            border: 1px solid #223044;
+            box-shadow: 0 10px 28px rgba(2,6,23,.45), inset 0 0 0 1px rgba(34,211,238,.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .shot {
+            padding: 14px;
+            border-radius: 16px;
+            background: radial-gradient(120% 120% at 20% 20%, rgba(34,211,238,.14), transparent 60%), var(--bg-soft);
+            border: 1px solid #223044;
+            box-shadow: inset 0 0 0 1px rgba(37,99,235,.15)
+        }
+
+            .shot img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 12px;
+                border: 1px solid var(--muted)
+            }
+
+            .shot svg {
+                width: 100%;
+                height: 200px;
+                border-radius: 12px;
+                border: 1px solid var(--muted)
+            }
+
+        .empty-shot {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            border-radius: 12px;
+            border: 1px dashed #223044;
+            background: radial-gradient(120% 120% at 20% 20%, rgba(34,211,238,.10), transparent 60%), var(--bg-soft);
+            color: var(--text-dim);
+        }
+
+            .empty-shot .empty-big {
+                font-weight: 800;
+                letter-spacing: .3px;
+                color: #9fb7ff
+            }
+
+            .empty-shot .empty-sub {
+                font-size: 12px
+            }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        /* Hero tweaks */
+        .title-xxl {
+            font-size: clamp(40px,6vw,72px);
+            line-height: 1.02;
+            font-weight: 800;
+            margin: 8px 0 10px
+        }
+
+        .h-accent {
+            background: linear-gradient(135deg,var(--brand),var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(34,211,238,.22);
+            background: rgba(34,211,238,.06)
+        }
+
+        .small {
+            font-size: 13px
+        }
+
+        .img-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--muted)
+        }
+
+        .img-card svg {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--muted);
+            background: linear-gradient(180deg,#0b1220,#0f1725)
+        }
+
+        .hero-left {
+            padding: 22px 0
+        }
+
+        .chip-accent {
+            background: linear-gradient(135deg,var(--brand),var(--accent));
+            color: #fff;
+            border: none;
+            box-shadow: var(--shadow);
+            font-weight: 600
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px
+        }
+
+        .exp {
+            padding: 14px;
+            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--muted)
+        }
+
+        .resume {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            background: var(--bg-soft);
+            border: 1px solid var(--muted)
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--muted);
+            background: var(--card);
+            color: var(--text)
+        }
+
+        .footer {
+            padding: 30px 0;
+            color: var(--text-dim)
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .grow {
+            flex: 1
+        }
+
+        .right {
+            margin-left: auto
+        }
+
+        .flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid var(--muted);
+            cursor: pointer;
+            opacity: .7
+        }
+
+            .flag.active {
+                opacity: 1;
+                outline: 2px solid var(--brand)
+            }
+
+        .toggle {
+            cursor: pointer
+        }
+
+        @media(max-width: 960px) {
+            .grid-2, .contact {
+                grid-template-columns: 1fr
+            }
+
+            .skills {
+                grid-template-columns: repeat(2,1fr)
+            }
+
+            .projects {
+                grid-template-columns: 1fr
+            }
+
+            .kpi {
+                grid-template-columns: 1fr
+            }
+
+            .skillgrid, .projgrid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* Modal gallery */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 40
+        }
+
+            .modal.open {
+                display: flex
+            }
+
+        .modal-card {
+            width: min(980px,96vw);
+            background: var(--card);
+            border: 1px solid var(--muted);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow)
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--muted)
+        }
+
+        .modal-body {
+            padding: 14px
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 10px;
+            overflow: auto;
+            padding: 10px 2px
+        }
+
+            .thumbs img {
+                height: 64px;
+                border: 2px solid transparent
+            }
+
+                .thumbs img.active {
+                    border-color: var(--brand)
+                }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <div class="brand"><div class="brand-logo"></div> <span id="brandName">Your Name</span></div>
+            <nav class="nav-links">
+                <a href="#home" data-i18n="nav_home">Home</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#background" data-i18n="nav_background">Background</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#projects" data-i18n="nav_projects">Projects</a>
+                <a href="#experience" data-i18n="nav_experience">Experience</a>
+                <a href="#resume" data-i18n="nav_resume">Resume</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+                <span class="chip toggle" id="themeToggle" aria-label="Toggle theme">🌙 <span class="muted">/ ☀️</span></span>
+                <div class="row" id="langSwitch">
+                    <img src="https://flagcdn.com/us.svg" alt="English" title="English" class="flag" data-lang="en">
+                    <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" class="flag" data-lang="es">
+                    <img src="https://flagcdn.com/br.svg" alt="Português" title="Português" class="flag" data-lang="pt">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <canvas id="bgfx" class="card" style="position:absolute;inset:0;height:100%;width:100%;z-index:-1;border:none"></canvas>
+            <div class="container grid grid-2">
+                <!-- Left: headline WITHOUT card -->
+                <div class="hero-left">
+                    <span class="chip chip-accent">🎮 Gameplay Programmer & GameDev</span>
+                    <h1 class="title-xxl">Hi, I'm <span class="h-accent" id="heroName">Your Name</span>.</h1>
+                    <p class="muted" data-i18n="hero_blurb">I build responsive, feel-good game mechanics and tools. Focused on Unity (C#), Unreal (C++), AI, shaders, and performant gameplay systems.</p>
+                    <div class="actions">
+                        <a class="btn primary" href="#projects">See my work</a>
+                        <a class="btn" href="#contact">Contact me</a>
+                    </div>
+                    <div class="pills">
+                        <span class="pill">Unity</span>
+                        <span class="pill">C#</span>
+                        <span class="pill">Unreal</span>
+                        <span class="pill">C++</span>
+                        <span class="pill">Shaders</span>
+                        <span class="pill">Vulkan</span>
+                        <span class="pill">Git</span>
+                        <span class="pill">Itch.io</span>
+                    </div>
+                </div>
+                <!-- Right: visual card -->
+                <div class="card pad img-card">
+                    <!-- Inline code/editor illustration -->
+                    <svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Code editor with script">
+                        <defs>
+                            <linearGradient id="codebg" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#0b1220" />
+                                <stop offset="1" stop-color="#0f1725" />
+                            </linearGradient>
+                            <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#22d3ee" stop-opacity="0.18" />
+                                <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.06" />
+                            </linearGradient>
+                            <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+                                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.5" />
+                            </filter>
+                        </defs>
+
+                        <!-- window frame -->
+                        <rect x="12" y="12" rx="20" ry="20" width="796" height="496" fill="url(#codebg)" stroke="#223044" />
+                        <rect x="12" y="12" rx="20" ry="20" width="796" height="60" fill="#0d1524" stroke="#223044" />
+                        <!-- traffic lights -->
+                        <circle cx="44" cy="42" r="8" fill="#ef4444" />
+                        <circle cx="70" cy="42" r="8" fill="#f59e0b" />
+                        <circle cx="96" cy="42" r="8" fill="#22c55e" />
+                        <!-- subtle glow overlay -->
+                        <rect x="12" y="72" width="796" height="436" fill="url(#glow)" />
+
+                        <!-- gutters -->
+                        <rect x="12" y="72" width="64" height="436" fill="#0d1524" />
+                        <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="18" fill="#64748b">
+                            <text x="48" y="110" text-anchor="end">1</text>
+                            <text x="48" y="140" text-anchor="end">2</text>
+                            <text x="48" y="170" text-anchor="end">3</text>
+                            <text x="48" y="200" text-anchor="end">4</text>
+                            <text x="48" y="230" text-anchor="end">5</text>
+                            <text x="48" y="260" text-anchor="end">6</text>
+                            <text x="48" y="290" text-anchor="end">7</text>
+                            <text x="48" y="320" text-anchor="end">8</text>
+                            <text x="48" y="350" text-anchor="end">9</text>
+                            <text x="48" y="380" text-anchor="end">10</text>
+                            <text x="48" y="410" text-anchor="end">11</text>
+                            <text x="48" y="440" text-anchor="end">12</text>
+                        </g>
+
+                        <!-- code lines -->
+                        <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="20">
+                            <text x="92" y="110" fill="#7dd3fc">// gameplay script</text>
+                            <text x="92" y="140" fill="#a78bfa"><tspan fill="#22d3ee">class</tspan> PlayerController <tspan fill="#93c5fd">{</tspan></text>
+                            <text x="92" y="170" fill="#93c5fd">  <tspan fill="#22d3ee">public</tspan> <tspan fill="#60a5fa">float</tspan> speed = 8.5;</text>
+                            <text x="92" y="200" fill="#93c5fd">  <tspan fill="#22d3ee">void</tspan> Update() <tspan fill="#93c5fd">{</tspan></text>
+                            <text x="92" y="230" fill="#a7f3d0">    var</tspan><tspan fill="#93c5fd"> input = GetAxis(<tspan fill="#f472b6">"Horizontal"</tspan>);</tspan></text>
+                            <text x="92" y="260" fill="#93c5fd">    transform.Translate(input * speed * <tspan fill="#facc15">deltaTime</tspan>);</text>
+                            <text x="92" y="290" fill="#93c5fd">  }</text>
+                            <text x="92" y="320" fill="#93c5fd">  <tspan fill="#22d3ee">void</tspan> Attack() { <tspan fill="#34d399">SpawnProjectile()</tspan>; }</text>
+                            <text x="92" y="350" fill="#93c5fd">}</text>
+                            <text x="92" y="410" fill="#64748b">// scripts • shaders • systems • tools</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT (title outside card + rule) -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title"><h2 class="section-h">About</h2><div class="rule"></div></div>
+                <div class="grid" style="grid-template-columns:1fr 1.2fr; gap:20px">
+                    <!-- Left: About content (links inside) -->
+                    <div class="card pad">
+                        <p class="muted" data-i18n="about_p1">I’m a game developer who loves shipping tight, responsive gameplay. I obsess over input feel, camera, and performance. I enjoy building tools that speed up content creation and improve iteration.</p>
+                        <p class="muted" data-i18n="about_p2">Tech I use regularly: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git, and profiling tools. I’ve also built small backends for online games and dabble in procedural generation.</p>
+                        <div class="btn-row links-row">
+                            <a class="btn btn-outline" id="linkGitHub" target="_blank" href="https://github.com/ValencoSilva">GitHub</a>
+                            <a class="btn btn-outline" id="linkLinkedIn" target="_blank" href="https://www.linkedin.com/in/valenco-guelere-e-silva-61243b23a">LinkedIn</a>
+                            <a class="btn btn-outline" id="linkItch" target="_blank" href="https://valenco-silva.itch.io">Itch.io</a>
+                            <a class="btn btn-outline" id="linkYouTube" target="_blank" href="https://www.youtube.com/@ValencoDev">YouTube</a>
+                            <a class="btn btn-outline" id="linkEmail" href="mailto:valencosilva.gamedev@gmail.com">Email</a>
+                        </div>
+                    </div>
+                    <!-- Right: Focus + Stack -->
+                    <div class="grid" style="gap:20px">
+                        <div class="card pad">
+                            <h3 class="title-md" data-i18n="focus_title">Focus</h3>
+                            <div class="badges">
+                                <span class="badge">Gameplay</span>
+                                <span class="badge">AI</span>
+                                <span class="badge">Tools</span>
+                                <span class="badge">Rendering</span>
+                            </div>
+                        </div>
+                        <div class="card pad">
+                            <h3 class="title-md" data-i18n="stack_title">Stack</h3>
+                            <div class="skills">
+                                <div class="skill">C++</div>
+                                <div class="skill">C#</div>
+                                <div class="skill">Unity</div>
+                                <div class="skill">Vulkan</div>
+                                <div class="skill">GLSL/HLSL</div>
+                                <div class="skill">ECS / entt</div>
+                                <div class="skill">Git</div>
+                                <div class="skill">Profiling</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- BACKGROUND -->
+        <section id="background">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="section-h" data-i18n="background_title">Background</h2>
+                    <div class="rule"></div>
+                </div>
+
+                <div class="grid" style="grid-template-columns:1fr 1fr; gap:20px">
+                    <!-- Hobbies -->
+                    <div class="card pad">
+                        <h3 class="title-md" data-i18n="background_hobbies">Hobbies</h3>
+                        <ul class="muted">
+                            <li>🔭 <span data-i18n="background_hobby_astro_label">Astronomy</span> — <span data-i18n="background_hobby_astro_text">Stargazing, constellations, and basic astrophotography.</span></li>
+                            <li>🎸 <span data-i18n="background_hobby_guitar_label">Playing guitar</span> — <span data-i18n="background_hobby_guitar_text">Fingerstyle and game soundtracks.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Personality (no lugar da “história com games”) -->
+                    <div class="card pad">
+                        <h3 class="title-md" data-i18n="background_personality">Personality</h3>
+                        <ul class="muted">
+                            <li>🗣️ <span data-i18n="background_trait_comm">Strong communication</span></li>
+                            <li>👥 <span data-i18n="background_trait_lead">Team leadership</span></li>
+                            <li>🗓️ <span data-i18n="background_trait_time">Time management & scheduling</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Books -->
+                <div class="card pad" style="margin-top:20px">
+                    <h3 class="title-md" data-i18n="background_books">Books that inspire me</h3>
+                    <ul class="muted books">
+                        <li>📘 <span>Blood, Sweat, and Pixels</span> — Jason Schreier</li>
+                        <li>📗 <span>The Art of Game Design</span> — Jesse Schell</li>
+                        <li>📙 <span>Rules of Play</span> — Katie Salen & Eric Zimmerman</li>
+                        <li>📕 <span>Replay: The History of Video Games</span> — Tristan Donovan</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CSS local da seção (pode ficar aqui) -->
+        <style>
+            #background .books {
+                columns: 1;
+                padding-left: 18px;
+            }
+
+                #background .books li {
+                    break-inside: avoid;
+                    margin-bottom: 6px;
+                }
+
+            @media (min-width: 900px) {
+                #background .books {
+                    columns: 2;
+                }
+            }
+        </style>
+
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-title"><h2 class="section-h">Skills</h2><div class="rule"></div></div>
+                <div class="skillgrid">
+                    <div class="skillcard">
+                        <h3><strong>Engines & Tools</strong></h3>
+                        <p>Unity, Unreal, Godot, Blender, Git, Perforce, JetBrains Rider, Visual Studio</p>
+                    </div>
+                    <div class="skillcard">
+                        <h3><strong>Programming</strong></h3>
+                        <p>C#, C++, Gameplay Systems, AI/BTs, ECS, Physics, Shaders (HLSL/GLSL), Editor Tools</p>
+                    </div>
+                    <div class="skillcard">
+                        <h3><strong>Workflow</strong></h3>
+                        <p>Agile/Scrum, Code Reviews, Profiling, Test Scenes, CI basics, Technical Docs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-title"><h2 class="section-h">Projects</h2><div class="rule"></div></div>
+                <div class="projgrid">
+                    <article class="projcard">
+                        <div class="shot">
+                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0" stop-color="#0b1220" />
+                                        <stop offset="1" stop-color="#0f1725" />
+                                    </linearGradient>
+                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
+                                        <rect width="40" height="40" fill="#111827" />
+                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
+                                    </pattern>
+                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
+                                    </filter>
+                                </defs>
+                                <rect width="800" height="450" fill="url(#bg)" />
+                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
+                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
+                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
+                            </svg>
+                        </div>
+                        <div><strong>Wave Shooter (Unity)</strong></div>
+                        <p class="muted">Gameplay, AI spawners, turrets, mines, upgrades. Focus on fast, responsive combat and clean architecture.</p>
+                        <div class="btn-row">
+                            <a class="btn" href="#" target="_blank">GitHub</a>
+                            <a class="btn" href="#" target="_blank">Itch.io</a>
+                            <a class="btn" href="#" target="_blank">Video</a>
+                        </div>
+                    </article>
+                    <article class="projcard">
+                        <div class="shot">
+                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0" stop-color="#0b1220" />
+                                        <stop offset="1" stop-color="#0f1725" />
+                                    </linearGradient>
+                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
+                                        <rect width="40" height="40" fill="#111827" />
+                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
+                                    </pattern>
+                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
+                                    </filter>
+                                </defs>
+                                <rect width="800" height="450" fill="url(#bg)" />
+                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
+                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
+                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
+                            </svg>
+                        </div>
+                        <div><strong>Old-School Soccer (Unity)</strong></div>
+                        <p class="muted">Retro 3D soccer with tight controls, UI in Figma, and progression. Includes editor tools for level building.</p>
+                        <div class="btn-row">
+                            <a class="btn" href="#" target="_blank">GitHub</a>
+                            <a class="btn" href="#" target="_blank">Itch.io</a>
+                            <a class="btn" href="#" target="_blank">Video</a>
+                        </div>
+                    </article>
+                    <article class="projcard">
+                        <div class="shot">
+                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0" stop-color="#0b1220" />
+                                        <stop offset="1" stop-color="#0f1725" />
+                                    </linearGradient>
+                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
+                                        <rect width="40" height="40" fill="#111827" />
+                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
+                                    </pattern>
+                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
+                                    </filter>
+                                </defs>
+                                <rect width="800" height="450" fill="url(#bg)" />
+                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
+                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
+                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
+                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
+                            </svg>
+                        </div>
+                        <div><strong>Vulkan Playground (C++)</strong></div>
+                        <p class="muted">Custom rasterizer, world/view/projection, lighting, and starfield. Focus on math & rendering foundations.</p>
+                        <div class="btn-row">
+                            <a class="btn" href="#" target="_blank">GitHub</a>
+                            <a class="btn" href="#" target="_blank">Devlog</a>
+                            <a class="btn" href="#" target="_blank">Video</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- MINI GAMES -->
+        <section id="minigames">
+            <style>
+                #minigames .games-grid {
+                    display: grid;
+                    gap: 18px;
+                    grid-template-columns: 1fr;
+                }
+
+                @media (min-width: 900px) {
+                    #minigames .games-grid {
+                        grid-template-columns: repeat(3,1fr);
+                    }
+                }
+
+                .game-card {
+                    background: var(--card);
+                    border: 1px solid var(--muted);
+                    border-radius: 16px;
+                    box-shadow: var(--shadow);
+                    padding: 14px;
+                }
+
+                    .game-card h3 {
+                        margin: 0 0 8px;
+                        font-size: 18px;
+                    }
+
+                .game-ui {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin: 8px 0 10px;
+                }
+
+                    .game-ui .btn {
+                        padding: 6px 10px;
+                        border-radius: 10px;
+                        border: 1px solid var(--muted);
+                        background: var(--bg-soft);
+                    }
+
+                        .game-ui .btn.primary {
+                            background: linear-gradient(180deg,#22d3ee,#8b5cf6);
+                            color: #0b1220;
+                            font-weight: 700;
+                            border: none;
+                        }
+
+                .stat {
+                    color: var(--text-dim);
+                }
+
+                .game-wrap {
+                    background: #0c1321;
+                    border: 1px solid var(--muted);
+                    border-radius: 12px;
+                    padding: 8px;
+                }
+
+                canvas.minigame {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    image-rendering: pixelated;
+                    border-radius: 8px;
+                    background: #0b1220;
+                }
+            </style>
+
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="section-h" data-i18n="minigames_title">Mini Games</h2>
+                    <div class="rule"></div>
+                </div>
+
+                <div class="games-grid">
+
+                    <!-- SNAKE -->
+                    <div class="game-card">
+                        <h3 data-i18n="game_snake">Snake</h3>
+                        <div class="game-ui">
+                            <button id="snStart" class="btn primary" data-i18n="start_label">Start</button>
+                            <button id="snReset" class="btn" data-i18n="reset_label">Reset</button>
+                            <span class="stat"><span data-i18n="score_label">Score</span>: <b id="snScore">0</b></span>
+                        </div>
+                        <div class="game-wrap">
+                            <canvas id="snake" class="minigame" width="400" height="280" aria-label="Snake"></canvas>
+                        </div>
+                        <p class="muted small">← ↑ → ↓</p>
+                    </div>
+
+                    <!-- PONG (Player vs AI) -->
+                    <div class="game-card">
+                        <h3 data-i18n="game_pong">Pong (vs AI)</h3>
+                        <div class="game-ui">
+                            <button id="pgStart" class="btn primary" data-i18n="start_label">Start</button>
+                            <button id="pgReset" class="btn" data-i18n="reset_label">Reset</button>
+                            <span class="stat"><span data-i18n="score_label">Score</span>: <b id="pgScore">0–0</b></span>
+                        </div>
+                        <div class="game-wrap">
+                            <canvas id="pong" class="minigame" width="420" height="280" aria-label="Pong"></canvas>
+                        </div>
+                        <p class="muted small" data-i18n="pong_hint">Move with mouse or W/S</p>
+                    </div>
+
+                    <!-- DODGE -->
+                    <div class="game-card">
+                        <h3 data-i18n="game_dodge">Dodge</h3>
+                        <div class="game-ui">
+                            <button id="dgStart" class="btn primary" data-i18n="start_label">Start</button>
+                            <button id="dgReset" class="btn" data-i18n="reset_label">Reset</button>
+                            <span class="stat"><span data-i18n="time_label">Time</span>: <b id="dgTime">0.0s</b></span>
+                        </div>
+                        <div class="game-wrap">
+                            <canvas id="dodge" class="minigame" width="420" height="280" aria-label="Dodge"></canvas>
+                        </div>
+                        <p class="muted small">W A S D</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <!-- CSS local e isolado à seção (pode deixar aqui mesmo) -->
+            <style>
+                #experience .exp-cat {
+                    margin-bottom: 16px;
+                }
+
+                #experience details {
+                    background: var(--card);
+                    border: 1px solid var(--muted);
+                    border-radius: 14px;
+                    box-shadow: var(--shadow);
+                }
+
+                #experience summary {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    list-style: none;
+                    cursor: pointer;
+                    padding: 14px 16px;
+                }
+
+                    #experience summary::-webkit-details-marker {
+                        display: none;
+                    }
+
+                    #experience summary .chev {
+                        margin-left: auto;
+                        transition: transform .2s;
+                    }
+
+                #experience details[open] summary .chev {
+                    transform: rotate(90deg);
+                }
+
+                #experience .exp-list {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 12px;
+                    padding: 0 16px 16px;
+                }
+
+                @media(min-width: 900px) {
+                    #experience .exp-list {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                }
+
+                #experience .exp-item {
+                    padding: 12px;
+                    border-radius: 12px;
+                    background: var(--bg-soft);
+                    border: 1px solid var(--muted);
+                }
+
+                #experience .row {
+                    display: flex;
+                    align-items: center;
+                }
+
+                #experience .right {
+                    margin-left: auto;
+                    color: var(--text-dim);
+                }
+
+                #experience .muted {
+                    color: var(--text-dim);
+                }
+
+                #experience .links a {
+                    margin-right: 8px;
+                }
+            </style>
+
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="section-h" data-i18n="exp_title">Experience</h2>
+                    <div class="rule"></div>
+                </div>
+
+                <!-- GAME JAMS -->
+                <details class="exp-cat" open>
+                    <summary>
+                        <strong data-i18n="exp_jams">Game Jams</strong>
+                        <span class="chev">▶</span>
+                    </summary>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>GMTK 2024 — Programmer</strong>
+                                <span class="right">48h</span>
+                            </div>
+                            <div class="muted">Unity • C# • Input/Camera</div>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Ludum Dare 55 — Solo</strong>
+                                <span class="right">72h</span>
+                            </div>
+                            <div class="muted">Procedural waves • AI</div>
+                        </div>
+
+                        <!-- DUPLIQUE ESTE BLOCO .exp-item PARA ADICIONAR MAIS JAMS -->
+                        <!--
+                        <div class="exp-item">
+                          <div class="row"><strong>[Nome da Jam] — [Papel]</strong><span class="right">[Duração/Ano]</span></div>
+                          <div class="muted">[Pontos rápidos/tecnologias]</div>
+                        </div>
+                        -->
+                    </div>
+                </details>
+
+                <!-- COLLEGE PROJECTS -->
+                <details class="exp-cat">
+                    <summary>
+                        <strong data-i18n="exp_college">College Projects</strong>
+                        <span class="chev">▶</span>
+                    </summary>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Capstone — Wave Shooter</strong>
+                                <span class="right">Unity</span>
+                            </div>
+                            <div class="muted">Weapons/Upgrades • Tools</div>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Rendering Playground</strong>
+                                <span class="right">C++/Vulkan</span>
+                            </div>
+                            <div class="muted">Matrices • Lighting • Starfield</div>
+                        </div>
+
+                        <!-- DUPLIQUE PARA MAIS PROJETOS -->
+                    </div>
+                </details>
+
+                <!-- INTERNSHIP -->
+                <details class="exp-cat">
+                    <summary>
+                        <strong data-i18n="exp_internship">Internship</strong>
+                        <span class="chev">▶</span>
+                    </summary>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Gameplay Programming Intern</strong>
+                                <span class="right">2024</span>
+                            </div>
+                            <div class="muted">Camera • UI • Bug fixes</div>
+                            <div class="links">
+                                <a href="#" class="btn btn-outline">GitHub</a>
+                                <a href="#" class="btn btn-outline">Video</a>
+                            </div>
+                        </div>
+
+                        <!-- DUPLIQUE PARA MAIS ESTÁGIOS -->
+                    </div>
+                </details>
+            </div>
+        </section>
+
+
+        <section id="resume">
+            <style>
+                /* estado desativado quando o arquivo não é encontrado */
+                #resume .btn.disabled {
+                    opacity: .55;
+                    pointer-events: none;
+                }
+            </style>
+
+            <div class="container">
+                <div class="resume">
+                    <div>
+                        <div class="title-md" data-i18n="resume_title">Resume / CV</div>
+                        <div class="muted" data-i18n="resume_blurb">
+                            Grab a printable PDF with experience, projects, and skills.
+                        </div>
+                    </div>
+
+                    <!-- Altere o href se quiser manter o nome com espaço (veja a Parte 2/2) -->
+                    <a id="cvLink"
+                       class="btn primary"
+                       href="assets/ValencoGuelereESilvaResume.pdf"
+                       download
+                       target="_blank"
+                       rel="noopener"
+                       title="Download CV (PDF)"
+                       data-i18n="resume_download">Download PDF</a>
+                </div>
+
+                <!-- feedback opcional -->
+                <div id="cvStatus" class="muted small" style="margin-top:8px"></div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container contact">
+                <div class="card pad">
+                    <h2 class="title-md" data-i18n="contact_title">Contact</h2>
+                    <form name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        <div class="row"><input class="input" name="name" placeholder="Name" required></div>
+                        <div class="row"><input class="input" name="email" type="email" placeholder="Email" required></div>
+                        <div class="row"><textarea class="input" name="message" placeholder="Message" rows="5" required></textarea></div>
+                        <div class="row"><button class="btn primary" type="submit" data-i18n="contact_send">Send</button></div>
+                    </form>
+                </div>
+                <div class="grid" style="gap:20px">
+                    <div class="card pad">
+                        <h3 class="title-md" data-i18n="contact_alt">Elsewhere</h3>
+                        <ul class="muted">
+                            <li>Email: <a href="mailto:valencosilva.gamedev@gmail.com">valencosilva.gamedev@gmail.com</a></li>
+                            <li>GitHub: <a href="https://github.com/ValencoSilva">github.com/ValencoSilva</a></li>
+                            <li>LinkedIn: <a href="https://www.linkedin.com/in/valenco-guelere-e-silva-61243b23a">linkedin.com/in/valenco-guelere-e-silva-61243b23a</a></li>
+                        </ul>
+                    </div>
+                    <div class="card pad">
+                        <h3 class="title-md" data-i18n="contact_note">Note</h3>
+                        <p class="muted" data-i18n="contact_note_p">I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container row" style="justify-content:space-between">
+            <span class="muted">© <span id="year"></span> <span id="footerName">Your Name</span>. <span data-i18n="foot_rights">All rights reserved.</span></span>
+            <div class="row" style="gap:10px">
+                <a href="#home" class="chip">↑ Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Gallery -->
+    <div class="modal" id="galleryModal" aria-hidden="true" role="dialog" aria-labelledby="galleryTitle">
+        <div class="modal-card">
+            <div class="modal-head">
+                <strong id="galleryTitle">Gallery</strong>
+                <div class="modal-actions">
+                    <button class="btn" id="prevImg" aria-label="Previous">◀</button>
+                    <button class="btn" id="nextImg" aria-label="Next">▶</button>
+                    <button class="btn" id="closeModal" aria-label="Close">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <img id="galleryMain" src="" alt="Gallery image" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--muted)" />
+                <div class="thumbs" id="galleryThumbs"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme toggle
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) { root.setAttribute('data-theme', savedTheme); }
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', t);
+            localStorage.setItem('theme', t);
+        });
+
+        // Simple i18n
+        const dict = {
+            en: {
+                nav_home: 'Home', nav_about: 'About', nav_skills: 'Skills', nav_projects: 'Projects', nav_experience: 'Experience', nav_resume: 'Resume', nav_contact: 'Contact',
+                chip_role: 'Game Developer • Gameplay & Tools', hero_blurb: "I design and build games with a focus on feel, performance, and clean architecture. I’m comfortable across the stack, from engine-level C++ to Unity/C#, shaders, and tooling.",
+                cta_view_projects: 'View Projects', cta_contact: 'Contact Me',
+                kpi_title: 'By the numbers', kpi_years_label: 'Years coding', kpi_projects_label: 'Projects shipped', kpi_players_label: 'Players reached',
+                links_title: 'Links',
+                about_title: 'About', about_p1: "I’m a game developer who loves shipping tight, responsive gameplay. I obsess over input feel, camera, and performance. I enjoy building tools that speed up content creation and improve iteration.", about_p2: "Tech I use regularly: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git, and profiling tools. I’ve also built small backends for online games and dabble in procedural generation.",
+                focus_title: 'Focus', stack_title: 'Stack',
+                skills_title: 'Skills',
+                projects_title: 'Projects', projects_btn: 'See all on GitHub',
+                p1_desc: 'Fast-paced wave shooter with modular weapons, spawning, and AI behaviors. Built with ECS patterns for scalability and performance.',
+                p2_desc: 'Old-school soccer prototype with BLIT rendering, tilemaps, and simple AI. Focused on feel, collisions, and camera work.',
+                p3_desc: 'Educational renderer with basic PBR, post-processing, and profiling markers. Focus on clean abstractions and debug tooling.',
+                exp_title: 'Experience',
+                resume_title: 'Resume / CV', resume_blurb: 'Grab a printable PDF with experience, projects, and skills.', resume_download: 'Download PDF',
+                contact_title: 'Contact', contact_alt: 'Elsewhere', contact_note: 'Note', contact_note_p: 'I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.',
+                contact_send: 'Send', foot_rights: 'All rights reserved.', exp_jams: 'Game Jams',
+                exp_college: 'College Projects',
+                exp_internship: 'Internship', background_title: 'Background',
+                background_hobbies: 'Hobbies',
+                background_personality: 'Personality',
+                background_books: 'Books that inspire me',
+                background_hobby_astro_label: 'Astronomy',
+                background_hobby_astro_text: 'Stargazing, constellations, and basic astrophotography.',
+                background_hobby_guitar_label: 'Playing guitar',
+                background_hobby_guitar_text: 'Fingerstyle and game soundtracks.',
+                background_trait_comm: 'Strong communication',
+                background_trait_lead: 'Team leadership',
+                background_trait_time: 'Time management & scheduling',
+
+            },
+            es: {
+                nav_home: 'Inicio', nav_about: 'Sobre mí', nav_skills: 'Habilidades', nav_projects: 'Proyectos', nav_experience: 'Experiencia', nav_resume: 'CV', nav_contact: 'Contacto',
+                chip_role: 'Desarrollador de Juegos • Gameplay y Herramientas', hero_blurb: "Diseño y construyo juegos con enfoque en sensación, rendimiento y una arquitectura limpia. Me siento cómodo en todo el stack, desde C++ a nivel de motor hasta Unity/C#, shaders y tooling.",
+                cta_view_projects: 'Ver Proyectos', cta_contact: 'Contáctame',
+                kpi_title: 'En números', kpi_years_label: 'Años programando', kpi_projects_label: 'Proyectos publicados', kpi_players_label: 'Jugadores alcanzados',
+                links_title: 'Enlaces',
+                about_title: 'Sobre mí', about_p1: "Soy desarrollador de juegos y me encanta publicar gameplay preciso y responsivo. Me obsesiona el input feel, la cámara y el rendimiento. También disfruto crear herramientas que aceleran la creación de contenido.",
+                about_p2: "Tecnologías que uso: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git y herramientas de perfilado. También he construido pequeños backends y hago generación procedural.",
+                focus_title: 'Enfoque', stack_title: 'Stack',
+                skills_title: 'Habilidades',
+                projects_title: 'Proyectos', projects_btn: 'Ver todo en GitHub',
+                p1_desc: 'Wave shooter rápido con armas modulares, spawning y IA. Construido con patrones ECS para escalar y rendir.',
+                p2_desc: 'Prototipo retro de fútbol con render BLIT, tilemaps e IA simple. Enfoque en sensación, colisiones y cámara.',
+                p3_desc: 'Renderer educativo con PBR básico, post-proceso y marcadores de perfilado. Enfoque en abstracciones limpias.',
+                exp_title: 'Experiencia',
+                resume_title: 'CV', resume_blurb: 'Descarga un PDF imprimible con experiencia, proyectos y habilidades.', resume_download: 'Descargar PDF',
+                contact_title: 'Contacto', contact_alt: 'Redes', contact_note: 'Nota', contact_note_p: 'Suelo responder en 24h. Para respuestas rápidas, menciona alcance, plataforma y tiempo.',
+                contact_send: 'Enviar', foot_rights: 'Todos los derechos reservados.',
+                exp_college: 'Proyectos universitarios',
+                exp_internship: 'Pasantía', background_title: 'Trayectoria',
+                background_hobbies: 'Aficiones',
+                background_personality: 'Personalidad',
+                background_books: 'Libros que me inspiran',
+                background_hobby_astro_label: 'Astronomía',
+                background_hobby_astro_text: 'Observación del cielo, constelaciones y astrofotografía básica.',
+                background_hobby_guitar_label: 'Tocar la guitarra',
+                background_hobby_guitar_text: 'Fingerstyle y bandas sonoras de juegos.',
+                background_trait_comm: 'Comunicación sólida',
+                background_trait_lead: 'Liderazgo de equipo',
+                background_trait_time: 'Gestión del tiempo y planificación',
+            },
+            pt: {
+                nav_home: 'Início', nav_about: 'Sobre', nav_skills: 'Habilidades', nav_projects: 'Projetos', nav_experience: 'Experiência', nav_resume: 'Currículo', nav_contact: 'Contato',
+                chip_role: 'Game Developer • Gameplay & Ferramentas', hero_blurb: "Eu projeto e desenvolvo jogos com foco em sensação, performance e arquitetura limpa. Atuo do C++ de engine até Unity/C#, shaders e ferramentas.",
+                cta_view_projects: 'Ver Projetos', cta_contact: 'Fale comigo',
+                kpi_title: 'Em números', kpi_years_label: 'Anos programando', kpi_projects_label: 'Projetos lançados', kpi_players_label: 'Jogadores alcançados',
+                links_title: 'Links',
+                about_title: 'Sobre', about_p1: "Sou um desenvolvedor de jogos que ama publicar gameplay polido e responsivo. Sou obcecado por input feel, câmera e performance. Curto criar ferramentas que aceleram a iteração.",
+                about_p2: "Tecnologias que uso: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git e ferramentas de perfil. Também construí pequenos backends e brinco com geração procedural.",
+                focus_title: 'Foco', stack_title: 'Stack',
+                skills_title: 'Habilidades',
+                projects_title: 'Projetos', projects_btn: 'Ver tudo no GitHub',
+                p1_desc: 'Wave shooter frenético com armas modulares, spawning e IA. Construído com padrões ECS para escalar e performar.',
+                p2_desc: 'Protótipo de futebol old-school com render BLIT, tilemaps e IA simples. Foco na sensação, colisões e câmera.',
+                p3_desc: 'Renderer de estudo com PBR básico, pós-processamento e marcadores de profile. Foco em abstrações limpas.',
+                exp_title: 'Experiência',
+                resume_title: 'Currículo', resume_blurb: 'Baixe um PDF com experiência, projetos e habilidades.', resume_download: 'Baixar PDF',
+                contact_title: 'Contato', contact_alt: 'Outros', contact_note: 'Aviso', contact_note_p: 'Respondo em 24h. Para resposta mais rápida, indique escopo, plataforma e prazo.',
+                contact_send: 'Enviar', foot_rights: 'Todos os direitos reservados.', exp_jams: 'Game Jams',
+                exp_college: 'Projetos de Faculdade',
+                exp_internship: 'Estágio', background_title: 'Background',
+                background_hobbies: 'Hobbies',
+                background_personality: 'Personalidade',
+                background_books: 'Livros que me inspiram',
+                background_hobby_astro_label: 'Astronomia',
+                background_hobby_astro_text: 'Observação do céu, constelações e astrofotografia básica.',
+                background_hobby_guitar_label: 'Tocar violão',
+                background_hobby_guitar_text: 'Fingerstyle e trilhas sonoras de games.',
+                background_trait_comm: 'Boa comunicação',
+                background_trait_lead: 'Boa liderança',
+                background_trait_time: 'Gestão de tempo e agenda',
+            }
+        };
+
+        function applyLang(lang) {
+            const strings = dict[lang] || dict.en;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (strings[key]) el.textContent = strings[key];
+            });
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('.flag').forEach(f => f.classList.toggle('active', f.dataset.lang === lang));
+        }
+
+        const savedLang = localStorage.getItem('lang');
+        applyLang(['en', 'es', 'pt'].includes(savedLang) ? savedLang : (navigator.language || 'en').slice(0, 2));
+
+        // Language switchers
+        document.getElementById('langSwitch').addEventListener('click', e => {
+            const btn = e.target.closest('.flag');
+            if (!btn) return;
+            applyLang(btn.dataset.lang);
+        });
+
+        // Personalization helpers
+        const brandName = localStorage.getItem('brandName') || 'Valenco Guelere e Silva';
+        document.getElementById('brandName').textContent = brandName;
+        document.getElementById('footerName').textContent = brandName;
+        const heroNameEl = document.getElementById('heroName'); if (heroNameEl) heroNameEl.textContent = brandName;
+
+        // Gallery data
+        const galleries = {
+            p1: [
+                'https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1489769002049-ccd828976a6c?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1600&q=60'
+            ],
+            p2: [
+                'https://images.unsplash.com/photo-1605901309584-818e25960a8b?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1587613865765-c8efc1ac1e2d?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1584989911260-4aa2c9a8903d?auto=format&fit=crop&w=1600&q=60'
+            ],
+            p3: [
+                'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=60',
+                'https://images.unsplash.com/photo-1573867639040-6b724211d01c?auto=format&fit=crop&w=1600&q=60'
+            ]
+        };
+
+        // Open gallery modal
+        const modal = document.getElementById('galleryModal');
+        const mainImg = document.getElementById('galleryMain');
+        const thumbs = document.getElementById('galleryThumbs');
+        let curSet = [], curIdx = 0;
+
+        function openModal(set) {
+            curSet = set; curIdx = 0;
+            renderImg();
+            renderThumbs();
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+        function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
+        function renderImg() { mainImg.src = curSet[curIdx]; }
+        function renderThumbs() {
+            thumbs.innerHTML = '';
+            curSet.forEach((src, i) => {
+                const im = document.createElement('img');
+                im.src = src; im.alt = 'Thumb';
+                im.className = i === curIdx ? 'active' : '';
+                im.addEventListener('click', () => { curIdx = i; renderImg(); renderThumbs(); });
+                thumbs.appendChild(im);
+            });
+        }
+
+        document.getElementById('prevImg').onclick = () => { curIdx = (curIdx - 1 + curSet.length) % curSet.length; renderImg(); renderThumbs(); };
+        document.getElementById('nextImg').onclick = () => { curIdx = (curIdx + 1) % curSet.length; renderImg(); renderThumbs(); };
+        document.getElementById('closeModal').onclick = closeModal;
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+        document.querySelectorAll('[data-gallery]').forEach(el => {
+            el.addEventListener('click', () => {
+                const key = el.getAttribute('data-gallery');
+                openModal(galleries[key] || []);
+            })
+        });
+
+        // BG particles
+        const c = document.getElementById('bgfx');
+        const ctx = c.getContext('2d');
+        let W, H, particles;
+        function resize() { W = c.width = innerWidth; H = c.height = 520; }
+        window.addEventListener('resize', resize); resize();
+        function spawn() {
+            particles = Array.from({ length: 70 }, () => ({
+                x: Math.random() * W, y: Math.random() * H,
+                vx: (Math.random() - .5) * .6, vy: (Math.random() - .5) * .6,
+                r: Math.random() * 1.8 + 0.6
+            }));
+        }
+        spawn();
+        function tick() {
+            ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--brand');
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(tick);
+        }
+        tick();
+        // ===== Resume / CV: verificação do arquivo e fallback =====
+
+        // Se seu arquivo tiver espaço no nome, use esta linha em vez da de baixo:
+        // const CV_PATH = 'assets/ValencoGuelereESilvaResume%20(1).pdf';
+
+        const CV_PATH = 'assets/ValencoGuelereESilvaResume.pdf'; // recomendado (sem espaço)
+
+        async function verifyCV() {
+            const link = document.getElementById('cvLink');
+            const statusEl = document.getElementById('cvStatus');
+
+            try {
+                const res = await fetch(CV_PATH, { method: 'HEAD' });
+                if (res.ok) {
+                    link.href = CV_PATH;
+                    link.classList.remove('disabled');
+                    statusEl.textContent = '';
+                } else {
+                    const alt = 'assets/ValencoGuelereESilvaResume%20.pdf';
+                    const resAlt = await fetch(alt, { method: 'HEAD' });
+                    if (resAlt.ok) {
+                        link.href = alt;
+                        link.classList.remove('disabled');
+                        statusEl.textContent = '';
+                    } else {
+                        link.classList.add('disabled');
+                        statusEl.textContent =
+                            'PDF not found. Put the file in /assets/ as "ValencoGuelereESilvaResume.pdf" ' +
+                            'or update the link to match your filename.';
+                    }
+                }
+            } catch {
+                /* Se o host bloquear HEAD, o link do HTML já abre o PDF */
+            }
+        }
+
+        // roda a verificação ao carregar
+        verifyCV();
+
+    </script>
+    <script>
+        // ============ SNAKE ============
+        (() => {
+            const c = document.getElementById('snake'); if (!c) return;
+            const ctx = c.getContext('2d');
+            const grid = 20, cols = Math.floor(c.width / grid), rows = Math.floor(c.height / grid);
+
+            let snake, dir, food, score, loop, running = false;
+            const rnd = (n) => Math.floor(Math.random() * n);
+            const placeFood = () => { food = { x: rnd(cols), y: rnd(rows) }; };
+
+            function reset() {
+                snake = [{ x: Math.floor(cols / 2), y: Math.floor(rows / 2) }];
+                dir = { x: 1, y: 0 }; score = 0; placeFood();
+                document.getElementById('snScore').textContent = score;
+                draw();
+            }
+            function start() {
+                if (running) return;
+                running = true;
+                loop = setInterval(tick, 1000 / 10);
+            }
+            function stop() { running = false; clearInterval(loop); }
+
+            function tick() {
+                // move
+                const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+                // wall -> game over
+                if (head.x < 0 || head.y < 0 || head.x >= cols || head.y >= rows || snake.some(p => p.x === head.x && p.y === head.y)) {
+                    stop(); reset(); return;
+                }
+                snake.unshift(head);
+                if (head.x === food.x && head.y === food.y) { score++; document.getElementById('snScore').textContent = score; placeFood(); }
+                else snake.pop();
+                draw();
+            }
+            function draw() {
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
+                // food
+                ctx.fillStyle = "#facc15"; ctx.fillRect(food.x * grid, food.y * grid, grid, grid);
+                // snake
+                ctx.fillStyle = "#22d3ee";
+                snake.forEach((p, i) => { ctx.fillRect(p.x * grid + 1, p.y * grid + 1, grid - 2, grid - 2); });
+            }
+
+            // controls
+            window.addEventListener('keydown', e => {
+                const k = e.key.toLowerCase();
+                if (k === 'arrowup' || k === 'w') { if (dir.y !== 1) { dir = { x: 0, y: -1 }; } }
+                if (k === 'arrowdown' || k === 's') { if (dir.y !== -1) { dir = { x: 0, y: 1 }; } }
+                if (k === 'arrowleft' || k === 'a') { if (dir.x !== 1) { dir = { x: -1, y: 0 }; } }
+                if (k === 'arrowright' || k === 'd') { if (dir.x !== -1) { dir = { x: 1, y: 0 }; } }
+            });
+
+            document.getElementById('snStart').onclick = start;
+            document.getElementById('snReset').onclick = () => { stop(); reset(); };
+            reset();
+        })();
+
+        // ============ PONG (Player vs AI) ============
+        (() => {
+            const c = document.getElementById('pong'); if (!c) return;
+            const ctx = c.getContext('2d');
+            let running = false, raf, pScore = 0, aiScore = 0;
+
+            const P = { x: 10, y: c.height / 2 - 30, w: 8, h: 60, s: 6 };
+            const A = { x: c.width - 18, y: c.height / 2 - 30, w: 8, h: 60, s: 4.5 };
+            const B = { x: c.width / 2, y: c.height / 2, r: 5, vx: 3.5, vy: 2.5 };
+
+            function resetBall(dir = 1) { B.x = c.width / 2; B.y = c.height / 2; B.vx = 3.5 * dir; B.vy = (Math.random() > .5 ? 1 : -1) * (2 + Math.random() * 1.5); }
+            function draw() {
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
+                ctx.fillStyle = "#223"; for (let i = 10; i < c.height; i += 20) ctx.fillRect(c.width / 2 - 1, i, 2, 10);
+                ctx.fillStyle = "#22d3ee"; ctx.fillRect(P.x, P.y, P.w, P.h);
+                ctx.fillStyle = "#8b5cf6"; ctx.fillRect(A.x, A.y, A.w, A.h);
+                ctx.fillStyle = "#e5e7eb"; ctx.beginPath(); ctx.arc(B.x, B.y, B.r, 0, Math.PI * 2); ctx.fill();
+            }
+            function tick() {
+                // move ball
+                B.x += B.vx; B.y += B.vy;
+                if (B.y < B.r || B.y > c.height - B.r) B.vy *= -1;
+
+                // player/AI collision
+                const hit = (px, py, pw, ph) => (B.x - B.r < px + pw && B.x + B.r > px && B.y > py && B.y < py + ph);
+                if (hit(P.x, P.y, P.w, P.h)) { B.vx = Math.abs(B.vx) * 1.05; B.vy += (B.y - (P.y + P.h / 2)) * 0.03; }
+                if (hit(A.x, A.y, A.w, A.h)) { B.vx = -Math.abs(B.vx) * 1.05; B.vy += (B.y - (A.y + A.h / 2)) * 0.03; }
+
+                // AI follows ball with smoothing
+                const targetY = B.y - A.h / 2; A.y += Math.sign(targetY - A.y) * A.s; A.y = Math.max(0, Math.min(c.height - A.h, A.y));
+
+                // scoring
+                if (B.x < 0) { aiScore++; updateScore(); resetBall(1); }
+                if (B.x > c.width) { pScore++; updateScore(); resetBall(-1); }
+
+                draw();
+                if (running) raf = requestAnimationFrame(tick);
+            }
+            function updateScore() { document.getElementById('pgScore').textContent = `${pScore}–${aiScore}`; }
+            function start() { if (running) return; running = true; raf = requestAnimationFrame(tick); }
+            function stop() { running = false; cancelAnimationFrame(raf); }
+            
+            // controls: mouse + W/S
+            c.addEventListener('mousemove', e => {
+                const rect = c.getBoundingClientRect(); const y = e.clientY - rect.top;
+                P.y = Math.max(0, Math.min(c.height - P.h, y - P.h / 2));
+            });
+            window.addEventListener('keydown', e => {
+                if (e.key.toLowerCase() === 'w') P.y = Math.max(0, P.y - P.s * 2.2);
+                if (e.key.toLowerCase() === 's') P.y = Math.min(c.height - P.h, P.y + P.s * 2.2);
+            });
+
+            document.getElementById('pgStart').onclick = start;
+            document.getElementById('pgReset').onclick = () => { stop(); pScore = 0; aiScore = 0; updateScore(); P.y = c.height / 2 - 30; A.y = c.height / 2 - 30; resetBall(); draw(); };
+            resetBall(); draw(); updateScore();
+        })();
+
+        // ============ DODGE ============
+        (() => {
+            const c = document.getElementById('dodge'); if (!c) return;
+            const ctx = c.getContext('2d');
+            const player = { x: 70, y: c.height / 2, r: 8, s: 3 };
+            let keys = {}, enemies = [], t = 0, alive = false, startTime = 0, raf;
+
+            function spawn() {
+                // pequenos quadrados vindo da direita
+                const y = 20 + Math.random() * (c.height - 40);
+                const s = 2 + Math.random() * 2.5;
+                enemies.push({ x: c.width + 10, y, w: 10, h: 10, v: s });
+            }
+            function reset() {
+                enemies = []; t = 0; alive = false; player.x = 70; player.y = c.height / 2; updateTime(0);
+                draw();
+            }
+            function start() {
+                if (alive) return; alive = true; startTime = performance.now(); loop();
+            }
+            function updateTime(sec) {
+                document.getElementById('dgTime').textContent = sec.toFixed(1) + 's';
+            }
+            function loop(now) {
+                if (!alive) return;
+                // input
+                if (keys['w']) player.y -= player.s;
+                if (keys['s']) player.y += player.s;
+                if (keys['a']) player.x -= player.s;
+                if (keys['d']) player.x += player.s;
+                player.x = Math.max(player.r, Math.min(c.width - player.r, player.x));
+                player.y = Math.max(player.r, Math.min(c.height - player.r, player.y));
+
+                // spawn / move enemies
+                if (Math.random() < 0.03) spawn();
+                enemies.forEach(e => e.x -= e.v);
+                enemies = enemies.filter(e => e.x > -20);
+
+                // collision
+                for (const e of enemies) {
+                    const cx = Math.max(e.x, Math.min(player.x, e.x + e.w));
+                    const cy = Math.max(e.y, Math.min(player.y, e.y + e.h));
+                    const dx = player.x - cx, dy = player.y - cy;
+                    if (dx * dx + dy * dy < player.r * player.r) { alive = false; }
+                }
+
+                // draw
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
+                ctx.fillStyle = "#22d3ee"; ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = "#f472b6"; enemies.forEach(e => ctx.fillRect(e.x, e.y, e.w, e.h));
+
+                // time
+                const sec = (performance.now() - startTime) / 1000; updateTime(sec);
+                raf = requestAnimationFrame(loop);
+            }
+            window.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; });
+            window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+            document.getElementById('dgStart').onclick = start;
+            document.getElementById('dgReset').onclick = () => { cancelAnimationFrame(raf); reset(); };
+            reset();
+        })();
+    </script>
+
+
+</body>
+</html>
