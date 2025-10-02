@@ -647,6 +647,250 @@
             white-space: nowrap;
             border: 0
         }
+        /* ===========================
+   MOBILE RESPONSIVE OVERRIDES
+   (place this AFTER your base CSS)
+   =========================== */
+
+        /* --- Generic tweaks for smaller screens --- */
+        @media (max-width: 960px) {
+            /* Layout containers */
+            .container {
+                padding: 0 16px;
+            }
+
+            /* Hero spacing and type scale */
+            .hero {
+                padding: 56px 0 28px;
+            }
+
+            .title-xxl {
+                font-size: clamp(32px, 7vw, 48px);
+            }
+
+            /* Two-column grids -> one column */
+            .grid-2,
+            .contact {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Projects / skills grids -> single column stacks */
+            .projgrid,
+            .skillgrid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Skills grid: 2 columns on tablets */
+            .skills {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Section header spacing */
+            .section-title {
+                gap: 12px;
+                margin-bottom: 14px;
+            }
+
+                .section-title .section-h {
+                    font-size: 28px;
+                }
+
+            /* Make the hero right card breathe */
+            .img-card {
+                margin-top: 8px;
+            }
+
+            /* Keep "Focus" pills visually balanced vs "Stack" */
+            .badges.equalize {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            /* Experience lists: taller on mobile and smooth scroll */
+            #experience .scroll-wrap {
+                max-height: 50vh; /* give more room on small screens */
+                padding-right: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Footer: center content */
+            .footer .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* --- Very small phones --- */
+        @media (max-width: 520px) {
+            /* Tighten typography slightly */
+            .title-md {
+                font-size: 20px;
+            }
+
+            .title-xl {
+                font-size: 36px;
+            }
+
+            /* Skills grid: 1 column when ultra-narrow */
+            .skills {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Focus badges: single column to avoid wrapping misalignment */
+            .badges.equalize {
+                grid-template-columns: 1fr;
+            }
+
+            /* Reduce inner paddings to fit better */
+            .card.pad {
+                padding: 16px;
+            }
+
+            .btn {
+                padding: 10px 14px;
+            }
+
+            /* Books list: single column */
+            #background .books {
+                columns: 1 !important;
+            }
+        }
+
+        /* ===========================
+   NAV: make links scrollable (no wrapping)
+   =========================== */
+        header {
+            background: linear-gradient(to bottom, rgba(11,15,20,.95), rgba(11,15,20,.65), transparent);
+        }
+
+        .nav {
+            display: flex; /* ensure flex on all sizes */
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto; /* horizontal scroll on small screens */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin; /* Firefox */
+            padding-bottom: 4px;
+            max-width: 100%;
+        }
+
+            .nav-links a {
+                white-space: nowrap; /* keep each label on one line */
+                scroll-snap-align: start;
+            }
+
+        @media (max-width: 960px) {
+            .nav-links {
+                scroll-snap-type: x mandatory;
+                margin: 0 -16px;
+                padding: 0 16px 6px;
+            }
+        }
+
+        /* Optional: subtle scrollbar styling on WebKit */
+        .nav-links::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .nav-links::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,.18);
+            border-radius: 999px;
+        }
+
+        /* Flags + theme toggle: keep compact and aligned */
+        #langSwitch {
+            display: inline-flex;
+            gap: 6px;
+        }
+
+        .flag {
+            width: 20px;
+            height: 14px;
+        }
+
+        .toggle {
+            padding: 6px 10px;
+            gap: 8px;
+        }
+
+            .toggle .i {
+                width: 1.1em;
+                height: 1.1em;
+            }
+
+        /* ===========================
+   CANVAS & SVG: mobile fit
+   =========================== */
+        canvas.minigame {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+            image-rendering: pixelated;
+            border-radius: 8px;
+            background: #0b1220;
+        }
+
+        /* Ensure project preview SVGs don’t overflow */
+        .projcard .shot svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===========================
+   ABOUT: ensure Focus vs Stack feel consistent
+   =========================== */
+        #about .grid > .card.pad {
+            height: 100%;
+        }
+
+        #about .skills .skill {
+            text-align: center;
+        }
+
+        /* ===========================
+   EXPERIENCE: touch targets
+   =========================== */
+        #experience summary {
+            padding: 14px 16px;
+        }
+
+        #experience .links .btn {
+            min-height: 36px;
+        }
+
+        /* ===========================
+   HERO pills wrap better
+   =========================== */
+        .pills {
+            row-gap: 8px;
+            column-gap: 8px;
+        }
+
+        /* ===========================
+   Forms: larger tap targets
+   =========================== */
+        .input {
+            min-height: 44px;
+        }
+
+        textarea.input {
+            min-height: 120px;
+        }
+
+        /* ===========================
+   Misc safe clamps
+   =========================== */
+        .title-xxl {
+            word-break: break-word;
+        }
+
     </style>
 </head>
 <body>
@@ -915,28 +1159,26 @@
                 </div>
 
                 <div class="grid" style="gap:14px; grid-template-columns: repeat(3,1fr);">-->
-                    <!-- Gameplay -->
-                    <!--<div class="card pad">
-                        <h3 class="title-md">Gameplay</h3>
-                        <ul class="muted">
-                            <li><b>C# (Unity)</b> — Avançado • ≤12m • <a href="#projects">repo/demo</a></li>
-                            <li><b>C++ (Unreal)</b> — Intermediário • ≤6m</li>
-                            <li><b>BTs / FSM / Input&Camera</b> — Avançado</li>
-                        </ul>
-                    </div>-->
-
-                    <!-- AI / Tools -->
-                    <!--<div class="card pad">
-                        <h3 class="title-md">AI & Tools</h3>
-                        <ul class="muted">
-                            <li><b>Behaviour Trees / NavMesh</b> — Intermediário • ≤12m</li>
-                            <li><b>Editor Tools (Unity)</b> — Avançado • ≤6m</li>
-                            <li><b>Profiling / Debug UI</b> — Avançado</li>
-                        </ul>
-                    </div>-->
-
-                    <!-- Rendering -->
-                    <!--<div class="card pad">
+        <!-- Gameplay -->
+        <!--<div class="card pad">
+            <h3 class="title-md">Gameplay</h3>
+            <ul class="muted">
+                <li><b>C# (Unity)</b> — Avançado • ≤12m • <a href="#projects">repo/demo</a></li>
+                <li><b>C++ (Unreal)</b> — Intermediário • ≤6m</li>
+                <li><b>BTs / FSM / Input&Camera</b> — Avançado</li>
+            </ul>
+        </div>-->
+        <!-- AI / Tools -->
+        <!--<div class="card pad">
+            <h3 class="title-md">AI & Tools</h3>
+            <ul class="muted">
+                <li><b>Behaviour Trees / NavMesh</b> — Intermediário • ≤12m</li>
+                <li><b>Editor Tools (Unity)</b> — Avançado • ≤6m</li>
+                <li><b>Profiling / Debug UI</b> — Avançado</li>
+            </ul>
+        </div>-->
+        <!-- Rendering -->
+        <!--<div class="card pad">
                         <h3 class="title-md">Rendering</h3>
                         <ul class="muted">
                             <li><b>Shaders (HLSL/GLSL)</b> — Intermediário • ≤12m</li>
@@ -947,8 +1189,6 @@
                 </div>
             </div>
         </section>-->
-
-
         <!-- PROJECTS -->
         <section id="projects">
             <div class="container">
@@ -1259,9 +1499,9 @@
                     margin-right: 8px;
                 }
 
-              
+
                 #experience .scroll-wrap {
-                    max-height: 260px; 
+                    max-height: 260px;
                     overflow: auto;
                     padding-right: 6px;
                     scroll-behavior: smooth;
@@ -1297,7 +1537,6 @@
                     scrollbar-color: var(--accent) var(--bg-soft);
                     scrollbar-width: thin;
                 }
-
             </style>
 
             <div class="container">
@@ -1313,25 +1552,25 @@
                         <span class="chev">▶</span>
                     </summary>
 
-                   
-                   
 
-                   
+
+
+
                     <div class="exp-list scroll-wrap" id="gamejamList">
-                       
+
                         <div class="exp-item">
                             <div class="row">
                                 <strong data-i18n="exp_gmtk_title">GMTK 2024 — Programmer</strong>
                                 <span class="right">48h</span>
                             </div>
                             <div class="muted" data-i18n="exp_gmtk_desc">Unity • C# • Input/Camera</div>
-                            
+
                             <div class="links" style="margin-top:8px">
                                 <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/gmtk-2024">GitHub</a>
                             </div>
                         </div>
 
-                        
+
                         <div class="exp-item">
                             <div class="row">
                                 <strong data-i18n="exp_ld55_title">Ludum Dare 55 — Solo</strong>
@@ -1356,7 +1595,7 @@
                     </summary>
 
 
-                  
+
 
 
                     <div class="exp-list scroll-wrap" id="collegeList">
@@ -1386,17 +1625,17 @@
 
                         <!-- EXEMPLE TO ADD MORE -->
                         <!--
-            <div class="exp-item">
-              <div class="row">
-                <strong>Physics Sandbox</strong>
-                <span class="right">Unity</span>
-              </div>
-              <div class="muted">ECS • Joints • Debug Tools</div>
-              <div class="links" style="margin-top:8px">
-                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
-              </div>
-            </div>
-            -->
+                        <div class="exp-item">
+                          <div class="row">
+                            <strong>Physics Sandbox</strong>
+                            <span class="right">Unity</span>
+                          </div>
+                          <div class="muted">ECS • Joints • Debug Tools</div>
+                          <div class="links" style="margin-top:8px">
+                            <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+                          </div>
+                        </div>
+                        -->
                         <div class="exp-item">
                             <div class="row">
                                 <strong>Physics Sandbox</strong>
@@ -1454,48 +1693,48 @@
                     </div>
                 </details>
 
-        <!-- INTERNSHIP (with scroll) -->
-<details class="exp-cat">
-  <summary>
-    <strong data-i18n="exp_internship">Internship</strong>
-    <span class="chev">▶</span>
-  </summary>
+                <!-- INTERNSHIP (with scroll) -->
+                <details class="exp-cat">
+                    <summary>
+                        <strong data-i18n="exp_internship">Internship</strong>
+                        <span class="chev">▶</span>
+                    </summary>
 
 
 
-  <!-- Scrollable content -->
-  <div class="exp-list scroll-wrap" id="internList">
-    <!-- ITEM: DJDE -->
-    <div class="exp-item">
-      <div class="row">
-        <strong data-i18n="intern_role">Prompt Engineer / Gameplay Programmer — DJDE</strong>
-        <span class="right">05/2023 – 02/2025</span>
-      </div>
-      <div class="muted" data-i18n="intern_location">Rio de Janeiro, Brazil</div>
+                    <!-- Scrollable content -->
+                    <div class="exp-list scroll-wrap" id="internList">
+                        <!-- ITEM: DJDE -->
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong data-i18n="intern_role">Prompt Engineer / Gameplay Programmer — DJDE</strong>
+                                <span class="right">05/2023 – 02/2025</span>
+                            </div>
+                            <div class="muted" data-i18n="intern_location">Rio de Janeiro, Brazil</div>
 
-      <p style="margin-top:8px" data-i18n="intern_summary">
-        Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support…
-      </p>
+                            <p style="margin-top:8px" data-i18n="intern_summary">
+                                Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support…
+                            </p>
 
-      <ul style="margin-top:8px; padding-left:18px; color:var(--text-dim)">
-        <li><b data-i18n="intern_b1_label">Prompt engineering (GPT-4):</b> <span data-i18n="intern_b1_text">…</span></li>
-        <li><b data-i18n="intern_b2_label">Gameplay:</b> <span data-i18n="intern_b2_text">…</span></li>
-        <li><b data-i18n="intern_b3_label">UI/UX:</b> <span data-i18n="intern_b3_text">…</span></li>
-        <li><b data-i18n="intern_b4_label">Integration & Quality:</b> <span data-i18n="intern_b4_text">…</span></li>
-      </ul>
+                            <ul style="margin-top:8px; padding-left:18px; color:var(--text-dim)">
+                                <li><b data-i18n="intern_b1_label">Prompt engineering (GPT-4):</b> <span data-i18n="intern_b1_text">…</span></li>
+                                <li><b data-i18n="intern_b2_label">Gameplay:</b> <span data-i18n="intern_b2_text">…</span></li>
+                                <li><b data-i18n="intern_b3_label">UI/UX:</b> <span data-i18n="intern_b3_text">…</span></li>
+                                <li><b data-i18n="intern_b4_label">Integration & Quality:</b> <span data-i18n="intern_b4_text">…</span></li>
+                            </ul>
 
-      <div class="muted" style="margin-top:8px" data-i18n="intern_stack">
-        Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs
-      </div>
+                            <div class="muted" style="margin-top:8px" data-i18n="intern_stack">
+                                Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs
+                            </div>
 
-      <div class="links" style="margin-top:8px">
-        <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/seu-repo-djde">GitHub</a>
-      </div>
-    </div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/seu-repo-djde">GitHub</a>
+                            </div>
+                        </div>
 
-    <!-- Duplicate .exp-item to add more internships -->
-  </div>
-</details>
+                        <!-- Duplicate .exp-item to add more internships -->
+                    </div>
+                </details>
 
 
 
@@ -1518,7 +1757,7 @@
                         if (url) a.href = url; else a.style.display = 'none';
                     });
                 </script>
-</section>
+        </section>
 
 
         <section id="resume">
@@ -1727,12 +1966,12 @@
             // Experience
             exp_title: 'Experience',
             exp_jams: 'Game Jams',
-            exp_gamejams: 'Game Jams',      
+            exp_gamejams: 'Game Jams',
             exp_college: 'College Projects',
             exp_university: 'College Projects',
             exp_internship: 'Internship',
 
-            // Experience — Intern 
+            // Experience — Intern
             intern_role: 'Prompt Engineer / Gameplay Programmer — DJDE',
             intern_location: 'Rio de Janeiro, Brazil',
             intern_summary:
@@ -1783,27 +2022,27 @@
             pong_hint: 'Move with mouse or W/S',
         };
 
-        // --- EN overrides 
+        // --- EN overrides
         const EN = {
-          
+
         };
 
         // --- ES overrides ------------------------------------------------------------
         const ES = {
             nav_home: 'Inicio',
-            nav_about: 'Sobre\u00A0mí',         
+            nav_about: 'Sobre\u00A0mí',
             nav_skills: 'Habilidades',
             nav_projects: 'Proyectos',
             nav_experience: 'Experiencia',
             nav_resume: 'CV',
             nav_contact: 'Contacto',
-            nav_minigames: 'Mini\u00A0juegos',  
+            nav_minigames: 'Mini\u00A0juegos',
 
             cta_view_projects: 'Ver Proyectos',
             cta_contact: 'Contáctame',
 
             chip_role: 'Desarrollador de Juegos • Gameplay y Herramientas',
-            hero_blurb:'Hago que la programación sea divertida, como desafiarme a mí mismo a crear un juego simplemente usando Notepad y Paint.',
+            hero_blurb: 'Hago que la programación sea divertida, como desafiarme a mí mismo a crear un juego simplemente usando Notepad y Paint.',
 
             //kpi_title: 'En números',
             //kpi_years_label: 'Años programando',
@@ -1817,8 +2056,8 @@
             focus_title: 'Enfoque',
             stack_title: 'Stack',
 
-         
-         
+
+
 
             // Background
             background_title: 'Trayectoria',
@@ -1913,16 +2152,16 @@
         // --- PT overrides ------------------------------------------------------------
         const PT = {
             nav_home: 'Início',
-            nav_about: 'Sobre',             
+            nav_about: 'Sobre',
             nav_skills: 'Habilidades',
             nav_projects: 'Projetos',
             nav_experience: 'Experiência',
             nav_resume: 'Currículo',
             nav_contact: 'Contato',
-            nav_minigames: 'Mini\u00A0Jogos', 
+            nav_minigames: 'Mini\u00A0Jogos',
 
             chip_role: 'Game Developer • Gameplay & Ferramentas',
-            hero_blurb:'Eu torno a programação divertida, como me desafiar a fazer um jogo apenas usando o Bloco de Notas e o Paint.',
+            hero_blurb: 'Eu torno a programação divertida, como me desafiar a fazer um jogo apenas usando o Bloco de Notas e o Paint.',
 
             //kpi_title: 'Em números',
             //kpi_years_label: 'Anos programando',
@@ -2027,25 +2266,25 @@
                 'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
         };
 
-        
+
         const dict = Object.freeze({
             en: { ...BASE, ...EN },
             es: { ...BASE, ...ES },
             pt: { ...BASE, ...PT },
         });
 
-        
+
 
         function applyLang(lang) {
             const strings = dict[lang] || dict.en;
 
-           
+
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');
                 if (strings[k]) el.textContent = strings[k];
             });
 
-            
+
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 const k = el.getAttribute('data-i18n-placeholder');
                 if (strings[k]) el.setAttribute('placeholder', strings[k]);
@@ -2196,13 +2435,35 @@
 
     </script>
     <script>
-        // ============ SNAKE ============
+        /* ============================================
+           HiDPI helper (retina) + logical size tracking
+           ============================================ */
+        function fitHiDPICanvas(c, logicalW, logicalH) {
+            const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+            c.width = Math.floor(logicalW * dpr);
+            c.height = Math.floor(logicalH * dpr);
+            c.style.width = logicalW + 'px';
+            c.style.height = logicalH + 'px';
+            const ctx = c.getContext('2d');
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            // Guardar tamanhos lógicos para a lógica do jogo
+            c._lw = logicalW;
+            c._lh = logicalH;
+            c._dpr = dpr;
+            return ctx;
+        }
+
+        /* ============================================
+           SNAKE — RAF + swipe + HiDPI
+           ============================================ */
         (() => {
             const c = document.getElementById('snake'); if (!c) return;
-            const ctx = c.getContext('2d');
-            const grid = 20, cols = Math.floor(c.width / grid), rows = Math.floor(c.height / grid);
+            const ctx = fitHiDPICanvas(c, 400, 280);
+            const grid = 20, W = c._lw, H = c._lh;
+            const cols = Math.floor(W / grid), rows = Math.floor(H / grid);
 
-            let snake, dir, food, score, loop, running = false;
+            let snake, dir, food, score, running = false, last = 0, acc = 0, step = 100;
+
             const rnd = (n) => Math.floor(Math.random() * n);
             const placeFood = () => { food = { x: rnd(cols), y: rnd(rows) }; };
 
@@ -2212,137 +2473,179 @@
                 document.getElementById('snScore').textContent = score;
                 draw();
             }
-            function start() {
-                if (running) return;
-                running = true;
-                loop = setInterval(tick, 1000 / 10);
+            function start() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(loop); } }
+            function stop() { running = false; }
+
+            function loop(now) {
+                if (!running) return;
+                const dt = now - last; last = now; acc += dt;
+                while (acc >= step) { tick(); acc -= step; }
+                draw();
+                requestAnimationFrame(loop);
             }
-            function stop() { running = false; clearInterval(loop); }
 
             function tick() {
-                // move
                 const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
-                // wall -> game over
-                if (head.x < 0 || head.y < 0 || head.x >= cols || head.y >= rows || snake.some(p => p.x === head.x && p.y === head.y)) {
-                    stop(); reset(); return;
-                }
+                const hitWall = head.x < 0 || head.y < 0 || head.x >= cols || head.y >= rows;
+                const hitSelf = snake.some(p => p.x === head.x && p.y === head.y);
+                if (hitWall || hitSelf) { stop(); reset(); return; }
+
                 snake.unshift(head);
-                if (head.x === food.x && head.y === food.y) { score++; document.getElementById('snScore').textContent = score; placeFood(); }
-                else snake.pop();
-                draw();
+                if (head.x === food.x && head.y === food.y) {
+                    score++; document.getElementById('snScore').textContent = score; placeFood();
+                    step = Math.max(55, step - 3); // acelera um pouco a cada comida
+                } else {
+                    snake.pop();
+                }
             }
+
             function draw() {
-                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, W, H);
                 // food
                 ctx.fillStyle = "#facc15"; ctx.fillRect(food.x * grid, food.y * grid, grid, grid);
                 // snake
                 ctx.fillStyle = "#22d3ee";
-                snake.forEach((p, i) => { ctx.fillRect(p.x * grid + 1, p.y * grid + 1, grid - 2, grid - 2); });
+                snake.forEach(p => ctx.fillRect(p.x * grid + 1, p.y * grid + 1, grid - 2, grid - 2));
             }
 
-            // controls
+            // Teclado
             window.addEventListener('keydown', e => {
                 const k = e.key.toLowerCase();
-                if (k === 'arrowup' || k === 'w') { if (dir.y !== 1) { dir = { x: 0, y: -1 }; } }
-                if (k === 'arrowdown' || k === 's') { if (dir.y !== -1) { dir = { x: 0, y: 1 }; } }
-                if (k === 'arrowleft' || k === 'a') { if (dir.x !== 1) { dir = { x: -1, y: 0 }; } }
-                if (k === 'arrowright' || k === 'd') { if (dir.x !== -1) { dir = { x: 1, y: 0 }; } }
+                if ((k === 'arrowup' || k === 'w') && dir.y !== 1) dir = { x: 0, y: -1 };
+                if ((k === 'arrowdown' || k === 's') && dir.y !== -1) dir = { x: 0, y: 1 };
+                if ((k === 'arrowleft' || k === 'a') && dir.x !== 1) dir = { x: -1, y: 0 };
+                if ((k === 'arrowright' || k === 'd') && dir.x !== -1) dir = { x: 1, y: 0 };
             });
 
+            // Swipe (mobile)
+            let sx = 0, sy = 0;
+            c.addEventListener('touchstart', e => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+            c.addEventListener('touchend', e => {
+                const t = e.changedTouches[0]; const dx = t.clientX - sx; const dy = t.clientY - sy;
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    if (dx > 10 && dir.x !== -1) dir = { x: 1, y: 0 };
+                    if (dx < -10 && dir.x !== 1) dir = { x: -1, y: 0 };
+                } else {
+                    if (dy > 10 && dir.y !== -1) dir = { x: 0, y: 1 };
+                    if (dy < -10 && dir.y !== 1) dir = { x: 0, y: -1 };
+                }
+            }, { passive: true });
+
             document.getElementById('snStart').onclick = start;
-            document.getElementById('snReset').onclick = () => { stop(); reset(); };
+            document.getElementById('snReset').onclick = () => { stop(); step = 100; reset(); };
             reset();
         })();
 
-        // ============ PONG (Player vs AI) ============
+        /* ============================================
+           PONG (Player vs AI) — touch + HiDPI
+           ============================================ */
         (() => {
             const c = document.getElementById('pong'); if (!c) return;
-            const ctx = c.getContext('2d');
+            const ctx = fitHiDPICanvas(c, 420, 280);
+            const W = c._lw, H = c._lh;
+
             let running = false, raf, pScore = 0, aiScore = 0;
 
-            const P = { x: 10, y: c.height / 2 - 30, w: 8, h: 60, s: 6 };
-            const A = { x: c.width - 18, y: c.height / 2 - 30, w: 8, h: 60, s: 4.5 };
-            const B = { x: c.width / 2, y: c.height / 2, r: 5, vx: 3.5, vy: 2.5 };
+            const P = { x: 10, y: H / 2 - 30, w: 8, h: 60, s: 6 };
+            const A = { x: W - 18, y: H / 2 - 30, w: 8, h: 60, s: 4.5 };
+            const B = { x: W / 2, y: H / 2, r: 5, vx: 3.5, vy: 2.5 };
 
-            function resetBall(dir = 1) { B.x = c.width / 2; B.y = c.height / 2; B.vx = 3.5 * dir; B.vy = (Math.random() > .5 ? 1 : -1) * (2 + Math.random() * 1.5); }
+            function resetBall(dir = 1) {
+                B.x = W / 2; B.y = H / 2;
+                B.vx = 3.5 * dir;
+                B.vy = (Math.random() > .5 ? 1 : -1) * (2 + Math.random() * 1.5);
+            }
+
             function draw() {
-                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
-                ctx.fillStyle = "#223"; for (let i = 10; i < c.height; i += 20) ctx.fillRect(c.width / 2 - 1, i, 2, 10);
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = "#223"; for (let i = 10; i < H; i += 20) ctx.fillRect(W / 2 - 1, i, 2, 10);
                 ctx.fillStyle = "#22d3ee"; ctx.fillRect(P.x, P.y, P.w, P.h);
                 ctx.fillStyle = "#8b5cf6"; ctx.fillRect(A.x, A.y, A.w, A.h);
                 ctx.fillStyle = "#e5e7eb"; ctx.beginPath(); ctx.arc(B.x, B.y, B.r, 0, Math.PI * 2); ctx.fill();
             }
-            function tick() {
-                // move ball
-                B.x += B.vx; B.y += B.vy;
-                if (B.y < B.r || B.y > c.height - B.r) B.vy *= -1;
 
-                // player/AI collision
+            function tick() {
+                // bola
+                B.x += B.vx; B.y += B.vy;
+                if (B.y < B.r || B.y > H - B.r) B.vy *= -1;
+
+                // colisões
                 const hit = (px, py, pw, ph) => (B.x - B.r < px + pw && B.x + B.r > px && B.y > py && B.y < py + ph);
                 if (hit(P.x, P.y, P.w, P.h)) { B.vx = Math.abs(B.vx) * 1.05; B.vy += (B.y - (P.y + P.h / 2)) * 0.03; }
                 if (hit(A.x, A.y, A.w, A.h)) { B.vx = -Math.abs(B.vx) * 1.05; B.vy += (B.y - (A.y + A.h / 2)) * 0.03; }
 
-                // AI follows ball with smoothing
-                const targetY = B.y - A.h / 2; A.y += Math.sign(targetY - A.y) * A.s; A.y = Math.max(0, Math.min(c.height - A.h, A.y));
+                // IA segue a bola suavemente
+                const targetY = B.y - A.h / 2;
+                A.y += Math.sign(targetY - A.y) * A.s;
+                A.y = Math.max(0, Math.min(H - A.h, A.y));
 
-                // scoring
+                // pontuação
                 if (B.x < 0) { aiScore++; updateScore(); resetBall(1); }
-                if (B.x > c.width) { pScore++; updateScore(); resetBall(-1); }
+                if (B.x > W) { pScore++; updateScore(); resetBall(-1); }
 
                 draw();
                 if (running) raf = requestAnimationFrame(tick);
             }
+
             function updateScore() { document.getElementById('pgScore').textContent = `${pScore}–${aiScore}`; }
             function start() { if (running) return; running = true; raf = requestAnimationFrame(tick); }
             function stop() { running = false; cancelAnimationFrame(raf); }
-            
-            // controls: mouse + W/S
-            c.addEventListener('mousemove', e => {
-                const rect = c.getBoundingClientRect(); const y = e.clientY - rect.top;
-                P.y = Math.max(0, Math.min(c.height - P.h, y - P.h / 2));
-            });
+
+            // Mouse + teclado
+            function setPlayerYFromClientY(clientY) {
+                const rect = c.getBoundingClientRect();
+                const y = clientY - rect.top;
+                P.y = Math.max(0, Math.min(H - P.h, y - P.h / 2));
+            }
+            c.addEventListener('mousemove', e => setPlayerYFromClientY(e.clientY));
             window.addEventListener('keydown', e => {
-                if (e.key.toLowerCase() === 'w') P.y = Math.max(0, P.y - P.s * 2.2);
-                if (e.key.toLowerCase() === 's') P.y = Math.min(c.height - P.h, P.y + P.s * 2.2);
+                const k = e.key.toLowerCase();
+                if (k === 'w') P.y = Math.max(0, P.y - P.s * 2.2);
+                if (k === 's') P.y = Math.min(H - P.h, P.y + P.s * 2.2);
             });
 
+            // Touch (mobile)
+            c.addEventListener('touchstart', e => setPlayerYFromClientY(e.touches[0].clientY), { passive: true });
+            c.addEventListener('touchmove', e => setPlayerYFromClientY(e.touches[0].clientY), { passive: true });
+
             document.getElementById('pgStart').onclick = start;
-            document.getElementById('pgReset').onclick = () => { stop(); pScore = 0; aiScore = 0; updateScore(); P.y = c.height / 2 - 30; A.y = c.height / 2 - 30; resetBall(); draw(); };
+            document.getElementById('pgReset').onclick = () => { stop(); pScore = 0; aiScore = 0; updateScore(); P.y = H / 2 - 30; A.y = H / 2 - 30; resetBall(); draw(); };
             resetBall(); draw(); updateScore();
         })();
 
-        // ============ DODGE ============
+        /* ============================================
+           DODGE — touch follow + HiDPI
+           ============================================ */
         (() => {
             const c = document.getElementById('dodge'); if (!c) return;
-            const ctx = c.getContext('2d');
-            const player = { x: 70, y: c.height / 2, r: 8, s: 3 };
-            let keys = {}, enemies = [], t = 0, alive = false, startTime = 0, raf;
+            const ctx = fitHiDPICanvas(c, 420, 280);
+            const W = c._lw, H = c._lh;
+
+            const player = { x: 70, y: H / 2, r: 8, s: 3 };
+            let keys = {}, enemies = [], alive = false, startTime = 0, raf;
 
             function spawn() {
-                // pequenos quadrados vindo da direita
-                const y = 20 + Math.random() * (c.height - 40);
+                const y = 20 + Math.random() * (H - 40);
                 const s = 2 + Math.random() * 2.5;
-                enemies.push({ x: c.width + 10, y, w: 10, h: 10, v: s });
+                enemies.push({ x: W + 10, y, w: 10, h: 10, v: s });
             }
             function reset() {
-                enemies = []; t = 0; alive = false; player.x = 70; player.y = c.height / 2; updateTime(0);
+                enemies = []; alive = false; player.x = 70; player.y = H / 2; updateTime(0);
                 draw();
             }
-            function start() {
-                if (alive) return; alive = true; startTime = performance.now(); loop();
-            }
-            function updateTime(sec) {
-                document.getElementById('dgTime').textContent = sec.toFixed(1) + 's';
-            }
-            function loop(now) {
+            function start() { if (alive) return; alive = true; startTime = performance.now(); loop(); }
+            function updateTime(sec) { document.getElementById('dgTime').textContent = sec.toFixed(1) + 's'; }
+
+            function loop() {
                 if (!alive) return;
-                // input
+
+                // input (WASD)
                 if (keys['w']) player.y -= player.s;
                 if (keys['s']) player.y += player.s;
                 if (keys['a']) player.x -= player.s;
                 if (keys['d']) player.x += player.s;
-                player.x = Math.max(player.r, Math.min(c.width - player.r, player.x));
-                player.y = Math.max(player.r, Math.min(c.height - player.r, player.y));
+                player.x = Math.max(player.r, Math.min(W - player.r, player.x));
+                player.y = Math.max(player.r, Math.min(H - player.r, player.y));
 
                 // spawn / move enemies
                 if (Math.random() < 0.03) spawn();
@@ -2358,22 +2661,69 @@
                 }
 
                 // draw
-                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, c.width, c.height);
-                ctx.fillStyle = "#22d3ee"; ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI * 2); ctx.fill();
-                ctx.fillStyle = "#f472b6"; enemies.forEach(e => ctx.fillRect(e.x, e.y, e.w, e.h));
+                draw();
 
                 // time
                 const sec = (performance.now() - startTime) / 1000; updateTime(sec);
                 raf = requestAnimationFrame(loop);
             }
+
+            function draw() {
+                ctx.fillStyle = "#0b1220"; ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = "#22d3ee"; ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = "#f472b6"; enemies.forEach(e => ctx.fillRect(e.x, e.y, e.w, e.h));
+            }
+
+            // Teclado
             window.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; });
             window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+            // Touch: seguir o dedo (mais natural no celular)
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+            function setPlayerFromTouch(t) {
+                const rect = c.getBoundingClientRect();
+                const x = t.clientX - rect.left;
+                const y = t.clientY - rect.top;
+                player.x = clamp(x, player.r, W - player.r);
+                player.y = clamp(y, player.r, H - player.r);
+            }
+            c.addEventListener('touchstart', e => { setPlayerFromTouch(e.touches[0]); }, { passive: true });
+            c.addEventListener('touchmove', e => { setPlayerFromTouch(e.touches[0]); }, { passive: true });
 
             document.getElementById('dgStart').onclick = start;
             document.getElementById('dgReset').onclick = () => { cancelAnimationFrame(raf); reset(); };
             reset();
         })();
+
+        /* ============================================
+           Global: pausar quando fora de vista/aba
+           ============================================ */
+        (function pauseWhenHidden() {
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    ['snReset', 'pgReset', 'dgReset'].forEach(id => {
+                        const btn = document.getElementById(id);
+                        if (btn) btn.click();
+                    });
+                }
+            });
+
+            const section = document.getElementById('minigames');
+            if (!section) return;
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) {
+                        ['snReset', 'pgReset', 'dgReset'].forEach(id => {
+                            const btn = document.getElementById(id);
+                            if (btn) btn.click();
+                        });
+                    }
+                });
+            }, { threshold: 0 });
+            io.observe(section);
+        })();
     </script>
+
 
 
 </body>
