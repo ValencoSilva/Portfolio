@@ -649,7 +649,6 @@
         }
         /* ===========================
    MOBILE RESPONSIVE OVERRIDES
-   (place this AFTER your base CSS)
    =========================== */
 
         /* --- Generic tweaks for smaller screens --- */
@@ -753,6 +752,8 @@
             #background .books {
                 columns: 1 !important;
             }
+           
+          
         }
 
         /* ===========================
@@ -1366,6 +1367,10 @@
                     image-rendering: pixelated;
                     border-radius: 8px;
                     background: #0b1220;
+                }
+
+                canvas.minigame {
+                    touch-action: none;
                 }
             </style>
 
