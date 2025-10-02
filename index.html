@@ -77,14 +77,14 @@
         }
 
         .nav {
-            display: flex;
+            display: flex-start;
             align-items: center;
             justify-content: space-between;
             padding: 16px 0
         }
 
         .brand {
-            display: flex;
+            display: none;
             gap: 10px;
             align-items: center;
             font-weight: 800;
@@ -99,9 +99,14 @@
             box-shadow: var(--shadow)
         }
 
+        .nav-links a {
+            white-space: nowrap;
+        }
+
+
         .nav-links {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             align-items: center
         }
 
@@ -165,7 +170,7 @@
         .muted {
             color: var(--text-dim)
         }
-        /* paragraph tone */
+     
         .actions {
             display: flex;
             flex-wrap: wrap;
@@ -205,7 +210,7 @@
                 background: rgba(37,99,235,.10);
                 border-color: rgba(37,99,235,.65)
             }
-        /* Blue links inside cards */
+       
         .card a:not(.btn) {
             color: inherit
         }
@@ -244,7 +249,7 @@
             padding: 36px 0
         }
 
-        /* Section header with rule */
+      
         .section-title {
             display: flex;
             align-items: center;
@@ -291,7 +296,7 @@
             border: 1px solid var(--muted)
         }
 
-        /* Projects & Skills fancy cards */
+       
         .skillgrid {
             display: grid;
             grid-template-columns: repeat(3,1fr);
@@ -385,7 +390,7 @@
             flex-wrap: wrap
         }
 
-        /* Hero tweaks */
+      
         .title-xxl {
             font-size: clamp(40px,6vw,72px);
             line-height: 1.02;
@@ -516,9 +521,40 @@
                 outline: 2px solid var(--brand)
             }
 
+      
         .toggle {
-            cursor: pointer
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1; 
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px solid var(--muted);
+            cursor: pointer;
         }
+
+            .toggle .i {
+                width: 1.1em;
+                height: 1.1em; 
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateY(0.5px);
+            }
+
+            .toggle .divider {
+                width: 1px;
+                height: 1.1em; 
+                background: currentColor;
+                opacity: .45;
+                border-radius: 1px;
+            }
+         
+            .toggle:focus-visible {
+                outline: 2px solid var(--brand);
+                outline-offset: 2px;
+            }
 
         @media(max-width: 960px) {
             .grid-2, .contact {
@@ -542,7 +578,7 @@
             }
         }
 
-        /* Modal gallery */
+       
         .modal {
             position: fixed;
             inset: 0;
@@ -621,14 +657,18 @@
                 <a href="#home" data-i18n="nav_home">Home</a>
                 <a href="#about" data-i18n="nav_about">About</a>
                 <a href="#background" data-i18n="nav_background">Background</a>
-                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <!--<a href="#skills" data-i18n="nav_skills">Skills</a>-->
                 <a href="#projects" data-i18n="nav_projects">Projects</a>
                 <a href="#minigames" data-i18n="nav_minigames">Mini Games</a>
 
                 <a href="#experience" data-i18n="nav_experience">Experience</a>
                 <a href="#resume" data-i18n="nav_resume">Resume</a>
                 <a href="#contact" data-i18n="nav_contact">Contact</a>
-                <span class="chip toggle" id="themeToggle" aria-label="Toggle theme">🌙 <span class="muted">/ ☀️</span></span>
+                <button class="chip toggle" id="themeToggle" aria-label="Alternar tema" type="button">
+                    <span class="i">🌙</span>
+                    <span class="divider" aria-hidden="true"></span>
+                    <span class="i">☀️</span>
+                </button>
                 <div class="row" id="langSwitch">
                     <img src="https://flagcdn.com/us.svg" alt="English" title="English" class="flag" data-lang="en">
                     <img src="https://flagcdn.com/es.svg" alt="Español" title="Español" class="flag" data-lang="es">
@@ -643,29 +683,26 @@
         <section id="home" class="hero">
             <canvas id="bgfx" class="card" style="position:absolute;inset:0;height:100%;width:100%;z-index:-1;border:none"></canvas>
             <div class="container grid grid-2">
-                <!-- Left: headline WITHOUT card -->
+
                 <div class="hero-left">
                     <span class="chip chip-accent">🎮 Gameplay Programmer & GameDev</span>
                     <h1 class="title-xxl">Hi, I'm <span class="h-accent" id="heroName">Your Name</span>.</h1>
-                    <p class="muted" data-i18n="hero_blurb">I build responsive, feel-good game mechanics and tools. Focused on Unity (C#), Unreal (C++), AI, shaders, and performant gameplay systems.</p>
+                    <p class="muted" data-i18n="hero_blurb">I make programming fun, like challenging myself to create a game simply using Notepad and Paint.</p>
                     <div class="actions">
-                        <a class="btn primary" href="#projects">See my work</a>
-                        <a class="btn" href="#contact">Contact me</a>
+                        <a class="btn primary" href="#projects" data-i18n="cta_view_projects">See my work</a>
+                        <a class="btn" href="#contact" data-i18n="cta_contact">Contact me</a>
                     </div>
                     <div class="pills">
                         <span class="pill">Unity</span>
                         <span class="pill">C#</span>
                         <span class="pill">Unreal</span>
                         <span class="pill">C++</span>
-                        <span class="pill">Shaders</span>
-                        <span class="pill">Vulkan</span>
-                        <span class="pill">Git</span>
-                        <span class="pill">Itch.io</span>
+                        <span class="pill">Blueprint</span>
                     </div>
                 </div>
-                <!-- Right: visual card -->
+
                 <div class="card pad img-card">
-                    <!-- Inline code/editor illustration -->
+
                     <svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Code editor with script">
                         <defs>
                             <linearGradient id="codebg" x1="0" y1="0" x2="0" y2="1">
@@ -726,15 +763,24 @@
             </div>
         </section>
 
-        <!-- ABOUT (title outside card + rule) -->
+        <!-- ABOUT -->
         <section id="about">
             <div class="container">
-                <div class="section-title"><h2 class="section-h">About</h2><div class="rule"></div></div>
+                <div class="section-title">
+                    <h2 class="section-h" data-i18n="about_title">About</h2>
+                    <div class="rule"></div>
+                </div>
                 <div class="grid" style="grid-template-columns:1fr 1.2fr; gap:20px">
                     <!-- Left: About content (links inside) -->
                     <div class="card pad">
-                        <p class="muted" data-i18n="about_p1">I’m a game developer who loves shipping tight, responsive gameplay. I obsess over input feel, camera, and performance. I enjoy building tools that speed up content creation and improve iteration.</p>
-                        <p class="muted" data-i18n="about_p2">Tech I use regularly: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git, and profiling tools. I’ve also built small backends for online games and dabble in procedural generation.</p>
+                        <p class="muted" data-i18n="about_p1">
+                            Brazilian graduated in the USA (Full Sail University). I am driven by learning fast, building well and improving with each delivery. I don’t seek to be “just another one”: I want to create gameplay systems that are clear, performant and easy to maintain. My objective is simple: to innovate consistently until it becomes a reference.
+                            In 10 years I will be in my college's hall of fame giving a talk and inspiring people who are sitting where I was sitting 10 years ago
+                            My dream is the same as yours.
+                        </p>
+                        <p class="muted" data-i18n="about_p2">
+                            My objective is simple: to innovate consistently until it becomes a reference.In 10 years I will be in my college hall of fame giving a talk and inspiring people who are sitting where I was sitting 10 years ago. My dreams are the same as yours dreams.,
+                        </p>
                         <div class="btn-row links-row">
                             <a class="btn btn-outline" id="linkGitHub" target="_blank" href="https://github.com/ValencoSilva">GitHub</a>
                             <a class="btn btn-outline" id="linkLinkedIn" target="_blank" href="https://www.linkedin.com/in/valenco-guelere-e-silva-61243b23a">LinkedIn</a>
@@ -747,11 +793,11 @@
                     <div class="grid" style="gap:20px">
                         <div class="card pad">
                             <h3 class="title-md" data-i18n="focus_title">Focus</h3>
-                            <div class="badges">
+                            <div class="badges equalize">
                                 <span class="badge">Gameplay</span>
                                 <span class="badge">AI</span>
                                 <span class="badge">Tools</span>
-                                <span class="badge">Rendering</span>
+                                <span class="badge">UI/HUD & UX</span>
                             </div>
                         </div>
                         <div class="card pad">
@@ -760,11 +806,11 @@
                                 <div class="skill">C++</div>
                                 <div class="skill">C#</div>
                                 <div class="skill">Unity</div>
+                                <div class="skill">Unreal</div>
                                 <div class="skill">Vulkan</div>
-                                <div class="skill">GLSL/HLSL</div>
-                                <div class="skill">ECS / entt</div>
-                                <div class="skill">Git</div>
-                                <div class="skill">Profiling</div>
+                                <div class="skill">Jira / Trello</div>
+                                <div class="skill">Git / GitHub</div>
+                                <div class="skill">ChatGPT</div>
                             </div>
                         </div>
                     </div>
@@ -813,8 +859,36 @@
             </div>
         </section>
 
-        <!-- CSS local da seção (pode ficar aqui) -->
+
         <style>
+
+            .badges.equalize {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0,1fr));
+                gap: 14px;
+            }
+
+                .badges.equalize .badge {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 14px;
+                    min-height: 44px;
+                    border-radius: 12px;
+                    background: var(--card);
+                    border: 1px solid var(--muted);
+                    font-size: 14px;
+                    color: var(--text);
+                    box-shadow: var(--shadow);
+                }
+
+
+            @media (max-width: 960px) {
+                .badges.equalize {
+                    grid-template-columns: repeat(2, minmax(0,1fr));
+                }
+            }
+
             #background .books {
                 columns: 1;
                 padding-left: 18px;
@@ -834,30 +908,51 @@
 
 
         <!-- SKILLS -->
-        <section id="skills">
+        <!--<section id="skills">
             <div class="container">
-                <div class="section-title"><h2 class="section-h">Skills</h2><div class="rule"></div></div>
-                <div class="skillgrid">
-                    <div class="skillcard">
-                        <h3><strong>Engines & Tools</strong></h3>
-                        <p>Unity, Unreal, Godot, Blender, Git, Perforce, JetBrains Rider, Visual Studio</p>
-                    </div>
-                    <div class="skillcard">
-                        <h3><strong>Programming</strong></h3>
-                        <p>C#, C++, Gameplay Systems, AI/BTs, ECS, Physics, Shaders (HLSL/GLSL), Editor Tools</p>
-                    </div>
-                    <div class="skillcard">
-                        <h3><strong>Workflow</strong></h3>
-                        <p>Agile/Scrum, Code Reviews, Profiling, Test Scenes, CI basics, Technical Docs</p>
+                <div class="section-title">
+                    <h2 class="section-h">Skills</h2><div class="rule"></div>
+                </div>
+
+                <div class="grid" style="gap:14px; grid-template-columns: repeat(3,1fr);">-->
+                    <!-- Gameplay -->
+                    <!--<div class="card pad">
+                        <h3 class="title-md">Gameplay</h3>
+                        <ul class="muted">
+                            <li><b>C# (Unity)</b> — Avançado • ≤12m • <a href="#projects">repo/demo</a></li>
+                            <li><b>C++ (Unreal)</b> — Intermediário • ≤6m</li>
+                            <li><b>BTs / FSM / Input&Camera</b> — Avançado</li>
+                        </ul>
+                    </div>-->
+
+                    <!-- AI / Tools -->
+                    <!--<div class="card pad">
+                        <h3 class="title-md">AI & Tools</h3>
+                        <ul class="muted">
+                            <li><b>Behaviour Trees / NavMesh</b> — Intermediário • ≤12m</li>
+                            <li><b>Editor Tools (Unity)</b> — Avançado • ≤6m</li>
+                            <li><b>Profiling / Debug UI</b> — Avançado</li>
+                        </ul>
+                    </div>-->
+
+                    <!-- Rendering -->
+                    <!--<div class="card pad">
+                        <h3 class="title-md">Rendering</h3>
+                        <ul class="muted">
+                            <li><b>Shaders (HLSL/GLSL)</b> — Intermediário • ≤12m</li>
+                            <li><b>Vulkan (C++)</b> — Estudo • ≤12m • <a href="#projects">devlog</a></li>
+                            <li><b>Post / Lighting / Materials</b> — Intermediário</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
+
 
         <!-- PROJECTS -->
         <section id="projects">
             <div class="container">
-                <div class="section-title"><h2 class="section-h">Projects</h2><div class="rule"></div></div>
+                <div class="section-title"><h2 class="section-h" data-i18n="projects_title">Projects</h2><div class="rule"></div></div>
                 <div class="projgrid">
                     <article class="projcard">
                         <div class="shot">
@@ -883,12 +978,14 @@
                                 <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
                             </svg>
                         </div>
-                        <div><strong>Wave Shooter (Unity)</strong></div>
-                        <p class="muted">Gameplay, AI spawners, turrets, mines, upgrades. Focus on fast, responsive combat and clean architecture.</p>
+                        <div><strong data-i18n="p1_title">Wave Shooter (Unity)</strong></div>
+                        <p class="muted" data-i18n="p1_desc">
+                            Fast-paced wave shooter with modular weapons, spawning, and AI behaviors...
+                        </p>
                         <div class="btn-row">
-                            <a class="btn" href="#" target="_blank">GitHub</a>
-                            <a class="btn" href="#" target="_blank">Itch.io</a>
-                            <a class="btn" href="#" target="_blank">Video</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_itch">Itch.io</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
                         </div>
                     </article>
                     <article class="projcard">
@@ -915,12 +1012,14 @@
                                 <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
                             </svg>
                         </div>
-                        <div><strong>Old-School Soccer (Unity)</strong></div>
-                        <p class="muted">Retro 3D soccer with tight controls, UI in Figma, and progression. Includes editor tools for level building.</p>
+                        <div><strong data-i18n="p2_title">Old-School Soccer (Unity)</strong></div>
+                        <p class="muted" data-i18n="p2_desc">
+                            Retro 3D soccer with tight controls, UI in Figma, and progression...
+                        </p>
                         <div class="btn-row">
-                            <a class="btn" href="#" target="_blank">GitHub</a>
-                            <a class="btn" href="#" target="_blank">Itch.io</a>
-                            <a class="btn" href="#" target="_blank">Video</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_itch">Itch.io</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
                         </div>
                     </article>
                     <article class="projcard">
@@ -947,12 +1046,14 @@
                                 <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
                             </svg>
                         </div>
-                        <div><strong>Vulkan Playground (C++)</strong></div>
-                        <p class="muted">Custom rasterizer, world/view/projection, lighting, and starfield. Focus on math & rendering foundations.</p>
+                        <div><strong data-i18n="p3_title">Vulkan Playground (C++)</strong></div>
+                        <p class="muted" data-i18n="p3_desc">
+                            Custom rasterizer, world/view/projection, lighting, and starfield...
+                        </p>
                         <div class="btn-row">
-                            <a class="btn" href="#" target="_blank">GitHub</a>
-                            <a class="btn" href="#" target="_blank">Devlog</a>
-                            <a class="btn" href="#" target="_blank">Video</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_devlog">Itch.io</a>
+                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
                         </div>
                     </article>
                 </div>
@@ -1085,7 +1186,7 @@
 
         <!-- EXPERIENCE -->
         <section id="experience">
-            <!-- CSS local e isolado à seção (pode deixar aqui mesmo) -->
+
             <style>
                 #experience .exp-cat {
                     margin-bottom: 16px;
@@ -1157,6 +1258,46 @@
                 #experience .links a {
                     margin-right: 8px;
                 }
+
+              
+                #experience .scroll-wrap {
+                    max-height: 260px; 
+                    overflow: auto;
+                    padding-right: 6px;
+                    scroll-behavior: smooth;
+                    border-radius: 12px;
+                }
+
+                /* Botão XS  ▲/▼ */
+                .btn.xs {
+                    padding: 6px 10px;
+                    font-size: 12px;
+                    line-height: 1;
+                    border-radius: 10px;
+                }
+
+                /* Scrollbar  (WebKit) */
+                #experience .scroll-wrap::-webkit-scrollbar {
+                    width: 10px;
+                }
+
+                #experience .scroll-wrap::-webkit-scrollbar-track {
+                    background: var(--bg-soft);
+                    border-radius: 10px;
+                }
+
+                #experience .scroll-wrap::-webkit-scrollbar-thumb {
+                    background: linear-gradient(180deg, var(--brand), var(--accent));
+                    border-radius: 10px;
+                    border: 2px solid var(--bg-soft);
+                }
+
+                /* Firefox */
+                #experience .scroll-wrap {
+                    scrollbar-color: var(--accent) var(--bg-soft);
+                    scrollbar-width: thin;
+                }
+
             </style>
 
             <div class="container">
@@ -1166,37 +1307,46 @@
                 </div>
 
                 <!-- GAME JAMS -->
-                <details class="exp-cat" open>
+                <details class="exp-cat">
                     <summary>
                         <strong data-i18n="exp_jams">Game Jams</strong>
                         <span class="chev">▶</span>
                     </summary>
-                    <div class="exp-list">
+
+                   
+                   
+
+                   
+                    <div class="exp-list scroll-wrap" id="gamejamList">
+                       
                         <div class="exp-item">
                             <div class="row">
-                                <strong>GMTK 2024 — Programmer</strong>
+                                <strong data-i18n="exp_gmtk_title">GMTK 2024 — Programmer</strong>
                                 <span class="right">48h</span>
                             </div>
-                            <div class="muted">Unity • C# • Input/Camera</div>
+                            <div class="muted" data-i18n="exp_gmtk_desc">Unity • C# • Input/Camera</div>
+                            
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/gmtk-2024">GitHub</a>
+                            </div>
                         </div>
 
+                        
                         <div class="exp-item">
                             <div class="row">
-                                <strong>Ludum Dare 55 — Solo</strong>
+                                <strong data-i18n="exp_ld55_title">Ludum Dare 55 — Solo</strong>
                                 <span class="right">72h</span>
                             </div>
-                            <div class="muted">Procedural waves • AI</div>
+                            <div class="muted" data-i18n="exp_ld55_desc">Procedural waves • AI</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/ld55">GitHub</a>
+                            </div>
                         </div>
 
-                        <!-- DUPLIQUE ESTE BLOCO .exp-item PARA ADICIONAR MAIS JAMS -->
-                        <!--
-                        <div class="exp-item">
-                          <div class="row"><strong>[Nome da Jam] — [Papel]</strong><span class="right">[Duração/Ano]</span></div>
-                          <div class="muted">[Pontos rápidos/tecnologias]</div>
-                        </div>
-                        -->
+                        <!-- Duplicate .exp-item to add more jams -->
                     </div>
                 </details>
+
 
                 <!-- COLLEGE PROJECTS -->
                 <details class="exp-cat">
@@ -1204,56 +1354,176 @@
                         <strong data-i18n="exp_college">College Projects</strong>
                         <span class="chev">▶</span>
                     </summary>
-                    <div class="exp-list">
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Capstone — Wave Shooter</strong>
-                                <span class="right">Unity</span>
-                            </div>
-                            <div class="muted">Weapons/Upgrades • Tools</div>
-                        </div>
+
+
+                  
+
+
+                    <div class="exp-list scroll-wrap" id="collegeList">
 
                         <div class="exp-item">
                             <div class="row">
-                                <strong>Rendering Playground</strong>
+                                <strong data-i18n="exp_college_t1">Capstone — Wave Shooter</strong>
+                                <span class="right" data-i18n="exp_college_r1">Unity</span>
+                            </div>
+                            <div class="muted" data-i18n="exp_college_d1">Weapons/Upgrades • Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/wave-shooter">GitHub</a>
+                            </div>
+                        </div>
+
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Fall’n blocks</strong>
                                 <span class="right">C++/Vulkan</span>
                             </div>
-                            <div class="muted">Matrices • Lighting • Starfield</div>
+                            <div class="muted">Tetris-like 3D • ECS/entt • ImGui</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/falln-blocks">GitHub</a>
+                            </div>
                         </div>
 
-                        <!-- DUPLIQUE PARA MAIS PROJETOS -->
-                    </div>
-                </details>
-
-                <!-- INTERNSHIP -->
-                <details class="exp-cat">
-                    <summary>
-                        <strong data-i18n="exp_internship">Internship</strong>
-                        <span class="chev">▶</span>
-                    </summary>
-                    <div class="exp-list">
+                        <!-- EXEMPLE TO ADD MORE -->
+                        <!--
+            <div class="exp-item">
+              <div class="row">
+                <strong>Physics Sandbox</strong>
+                <span class="right">Unity</span>
+              </div>
+              <div class="muted">ECS • Joints • Debug Tools</div>
+              <div class="links" style="margin-top:8px">
+                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+              </div>
+            </div>
+            -->
                         <div class="exp-item">
                             <div class="row">
-                                <strong>Gameplay Programming Intern</strong>
-                                <span class="right">2024</span>
+                                <strong>Physics Sandbox</strong>
+                                <span class="right">Unity</span>
                             </div>
-                            <div class="muted">Camera • UI • Bug fixes</div>
-                            <div class="links">
-                                <a href="#" class="btn btn-outline">GitHub</a>
-                                <a href="#" class="btn btn-outline">Video</a>
+                            <div class="muted">ECS • Joints • Debug Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
                             </div>
                         </div>
 
-                        <!-- DUPLIQUE PARA MAIS ESTÁGIOS -->
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Physics Sandbox</strong>
+                                <span class="right">Unity</span>
+                            </div>
+                            <div class="muted">ECS • Joints • Debug Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+                            </div>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Physics Sandbox</strong>
+                                <span class="right">Unity</span>
+                            </div>
+                            <div class="muted">ECS • Joints • Debug Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+                            </div>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Physics Sandbox</strong>
+                                <span class="right">Unity</span>
+                            </div>
+                            <div class="muted">ECS • Joints • Debug Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+                            </div>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="row">
+                                <strong>Physics Sandbox</strong>
+                                <span class="right">Unity</span>
+                            </div>
+                            <div class="muted">ECS • Joints • Debug Tools</div>
+                            <div class="links" style="margin-top:8px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+                            </div>
+                        </div>
                     </div>
                 </details>
-            </div>
-        </section>
+
+        <!-- INTERNSHIP (with scroll) -->
+<details class="exp-cat">
+  <summary>
+    <strong data-i18n="exp_internship">Internship</strong>
+    <span class="chev">▶</span>
+  </summary>
+
+
+
+  <!-- Scrollable content -->
+  <div class="exp-list scroll-wrap" id="internList">
+    <!-- ITEM: DJDE -->
+    <div class="exp-item">
+      <div class="row">
+        <strong data-i18n="intern_role">Prompt Engineer / Gameplay Programmer — DJDE</strong>
+        <span class="right">05/2023 – 02/2025</span>
+      </div>
+      <div class="muted" data-i18n="intern_location">Rio de Janeiro, Brazil</div>
+
+      <p style="margin-top:8px" data-i18n="intern_summary">
+        Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support…
+      </p>
+
+      <ul style="margin-top:8px; padding-left:18px; color:var(--text-dim)">
+        <li><b data-i18n="intern_b1_label">Prompt engineering (GPT-4):</b> <span data-i18n="intern_b1_text">…</span></li>
+        <li><b data-i18n="intern_b2_label">Gameplay:</b> <span data-i18n="intern_b2_text">…</span></li>
+        <li><b data-i18n="intern_b3_label">UI/UX:</b> <span data-i18n="intern_b3_text">…</span></li>
+        <li><b data-i18n="intern_b4_label">Integration & Quality:</b> <span data-i18n="intern_b4_text">…</span></li>
+      </ul>
+
+      <div class="muted" style="margin-top:8px" data-i18n="intern_stack">
+        Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs
+      </div>
+
+      <div class="links" style="margin-top:8px">
+        <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/seu-repo-djde">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Duplicate .exp-item to add more internships -->
+  </div>
+</details>
+
+
+
+
+
+
+
+                <script>
+
+                    const EXP_GITHUB = {
+                        jam_gmtk: "https://github.com/SEUUSER/gmtk-2024",
+                        jam_ld55: "https://github.com/SEUUSER/ludum-dare-55",
+                        college_capstone: "https://github.com/SEUUSER/capstone-wave-shooter",
+                        college_rendering: "https://github.com/SEUUSER/rendering-playground",
+                        intern_2024: "https://github.com/SEUUSER/internship-gameplay-showcase"
+                    };
+
+                    document.querySelectorAll('[data-role="btn-github"]').forEach(a => {
+                        const k = a.dataset.key, url = EXP_GITHUB[k];
+                        if (url) a.href = url; else a.style.display = 'none';
+                    });
+                </script>
+</section>
 
 
         <section id="resume">
             <style>
-                /* estado desativado quando o arquivo não é encontrado */
+
                 #resume .btn.disabled {
                     opacity: .55;
                     pointer-events: none;
@@ -1269,7 +1539,7 @@
                         </div>
                     </div>
 
-                    <!-- Altere o href se quiser manter o nome com espaço (veja a Parte 2/2) -->
+
                     <a id="cvLink"
                        class="btn primary"
                        href="assets/ValencoGuelereESilvaResume.pdf"
@@ -1280,7 +1550,7 @@
                        data-i18n="resume_download">Download PDF</a>
                 </div>
 
-                <!-- feedback opcional -->
+
                 <div id="cvStatus" class="muted small" style="margin-top:8px"></div>
             </div>
         </section>
@@ -1293,10 +1563,28 @@
                     <h2 class="title-md" data-i18n="contact_title">Contact</h2>
                     <form name="contact" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="contact">
-                        <div class="row"><input class="input" name="name" placeholder="Name" required></div>
-                        <div class="row"><input class="input" name="email" type="email" placeholder="Email" required></div>
-                        <div class="row"><textarea class="input" name="message" placeholder="Message" rows="5" required></textarea></div>
-                        <div class="row"><button class="btn primary" type="submit" data-i18n="contact_send">Send</button></div>
+
+                        <div class="row">
+                            <input class="input" name="name"
+                                   placeholder="Name"
+                                   data-i18n-placeholder="contact_name_ph" required>
+                        </div>
+
+                        <div class="row">
+                            <input class="input" name="email" type="email"
+                                   placeholder="Email"
+                                   data-i18n-placeholder="contact_email_ph" required>
+                        </div>
+
+                        <div class="row">
+                            <textarea class="input" name="message" rows="5"
+                                      placeholder="Message"
+                                      data-i18n-placeholder="contact_msg_ph" required></textarea>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn primary" type="submit" data-i18n="contact_send">Send</button>
+                        </div>
                     </form>
                 </div>
                 <div class="grid" style="gap:20px">
@@ -1359,138 +1647,414 @@
         });
 
         // Simple i18n
-        const dict = {
-            en: {
-                nav_home: 'Home', nav_about: 'About', nav_skills: 'Skills', nav_projects: 'Projects', nav_experience: 'Experience', nav_resume: 'Resume', nav_contact: 'Contact',
-                chip_role: 'Game Developer • Gameplay & Tools', hero_blurb: "I design and build games with a focus on feel, performance, and clean architecture. I’m comfortable across the stack, from engine-level C++ to Unity/C#, shaders, and tooling.",
-                cta_view_projects: 'View Projects', cta_contact: 'Contact Me',
-                kpi_title: 'By the numbers', kpi_years_label: 'Years coding', kpi_projects_label: 'Projects shipped', kpi_players_label: 'Players reached',
-                links_title: 'Links',
-                about_title: 'About', about_p1: "I’m a game developer who loves shipping tight, responsive gameplay. I obsess over input feel, camera, and performance. I enjoy building tools that speed up content creation and improve iteration.", about_p2: "Tech I use regularly: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git, and profiling tools. I’ve also built small backends for online games and dabble in procedural generation.",
-                focus_title: 'Focus', stack_title: 'Stack',
-                skills_title: 'Skills',
-                projects_title: 'Projects', projects_btn: 'See all on GitHub',
-                p1_desc: 'Fast-paced wave shooter with modular weapons, spawning, and AI behaviors. Built with ECS patterns for scalability and performance.',
-                p2_desc: 'Old-school soccer prototype with BLIT rendering, tilemaps, and simple AI. Focused on feel, collisions, and camera work.',
-                p3_desc: 'Educational renderer with basic PBR, post-processing, and profiling markers. Focus on clean abstractions and debug tooling.',
-                exp_title: 'Experience',
-                resume_title: 'Resume / CV', resume_blurb: 'Grab a printable PDF with experience, projects, and skills.', resume_download: 'Download PDF',
-                contact_title: 'Contact', contact_alt: 'Elsewhere', contact_note: 'Note', contact_note_p: 'I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.',
-                contact_send: 'Send', foot_rights: 'All rights reserved.', exp_jams: 'Game Jams',
-                exp_college: 'College Projects',
-                exp_internship: 'Internship', background_title: 'Background',
-                background_hobbies: 'Hobbies',
-                background_personality: 'Personality',
-                background_books: 'Books that inspire me',
-                background_hobby_astro_label: 'Astronomy',
-                background_hobby_astro_text: 'Stargazing, constellations, and basic astrophotography.',
-                background_hobby_guitar_label: 'Playing guitar',
-                background_hobby_guitar_text: 'Fingerstyle and game soundtracks.',
-                background_trait_comm: 'Strong communication',
-                background_trait_lead: 'Team leadership',
-                background_trait_time: 'Time management & scheduling', minigames_title: 'Mini Games',
-                game_snake: 'Snake',
-                game_pong: 'Pong (vs AI)',
-                game_dodge: 'Dodge',
-                start_label: 'Start',
-                reset_label: 'Reset',
-                score_label: 'Score',
-                time_label: 'Time',
-                pong_hint: 'Move with mouse or W/S', nav_minigames: 'Mini Games',
+        // --- BASE: textos compartilhados entre os idiomas ----------------------------
+        const BASE = {
+            // Nav
+            nav_home: 'Home',
+            nav_about: 'About',
+            nav_skills: 'Skills',
+            nav_projects: 'Projects',
+            nav_experience: 'Experience',
+            nav_resume: 'Resume',
+            nav_contact: 'Contact',
+            nav_minigames: 'Mini Games',
 
-            },
-            es: {
-                nav_home: 'Inicio', nav_about: 'Sobre mí', nav_skills: 'Habilidades', nav_projects: 'Proyectos', nav_experience: 'Experiencia', nav_resume: 'CV', nav_contact: 'Contacto',
-                chip_role: 'Desarrollador de Juegos • Gameplay y Herramientas', hero_blurb: "Diseño y construyo juegos con enfoque en sensación, rendimiento y una arquitectura limpia. Me siento cómodo en todo el stack, desde C++ a nivel de motor hasta Unity/C#, shaders y tooling.",
-                cta_view_projects: 'Ver Proyectos', cta_contact: 'Contáctame',
-                kpi_title: 'En números', kpi_years_label: 'Años programando', kpi_projects_label: 'Proyectos publicados', kpi_players_label: 'Jugadores alcanzados',
-                links_title: 'Enlaces',
-                about_title: 'Sobre mí', about_p1: "Soy desarrollador de juegos y me encanta publicar gameplay preciso y responsivo. Me obsesiona el input feel, la cámara y el rendimiento. También disfruto crear herramientas que aceleran la creación de contenido.",
-                about_p2: "Tecnologías que uso: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git y herramientas de perfilado. También he construido pequeños backends y hago generación procedural.",
-                focus_title: 'Enfoque', stack_title: 'Stack',
-                skills_title: 'Habilidades',
-                projects_title: 'Proyectos', projects_btn: 'Ver todo en GitHub',
-                p1_desc: 'Wave shooter rápido con armas modulares, spawning y IA. Construido con patrones ECS para escalar y rendir.',
-                p2_desc: 'Prototipo retro de fútbol con render BLIT, tilemaps e IA simple. Enfoque en sensación, colisiones y cámara.',
-                p3_desc: 'Renderer educativo con PBR básico, post-proceso y marcadores de perfilado. Enfoque en abstracciones limpias.',
-                exp_title: 'Experiencia',
-                resume_title: 'CV', resume_blurb: 'Descarga un PDF imprimible con experiencia, proyectos y habilidades.', resume_download: 'Descargar PDF',
-                contact_title: 'Contacto', contact_alt: 'Redes', contact_note: 'Nota', contact_note_p: 'Suelo responder en 24h. Para respuestas rápidas, menciona alcance, plataforma y tiempo.',
-                contact_send: 'Enviar', foot_rights: 'Todos los derechos reservados.',
-                exp_college: 'Proyectos universitarios',
-                exp_internship: 'Pasantía', background_title: 'Trayectoria',
-                background_hobbies: 'Aficiones',
-                background_personality: 'Personalidad',
-                background_books: 'Libros que me inspiran',
-                background_hobby_astro_label: 'Astronomía',
-                background_hobby_astro_text: 'Observación del cielo, constelaciones y astrofotografía básica.',
-                background_hobby_guitar_label: 'Tocar la guitarra',
-                background_hobby_guitar_text: 'Fingerstyle y bandas sonoras de juegos.',
-                background_trait_comm: 'Comunicación sólida',
-                background_trait_lead: 'Liderazgo de equipo',
-                background_trait_time: 'Gestión del tiempo y planificación', minigames_title: 'Mini juegos',
-                game_snake: 'Snake',
-                game_pong: 'Pong (vs IA)',
-                game_dodge: 'Esquivar',
-                start_label: 'Iniciar',
-                reset_label: 'Reiniciar',
-                score_label: 'Puntuación',
-                time_label: 'Tiempo',
-                pong_hint: 'Mueve con el mouse o W/S', nav_minigames: 'Mini juegos',
+            // Hero / CTA
+            chip_role: 'Game Developer • Gameplay & Tools',
+            hero_blurb:
+                'I make programming fun, like challenging myself to make a game just using Notepad and Paint.',
+            cta_view_projects: 'View Projects',
+            cta_contact: 'Contact Me',
+
+            // KPIs
+            //kpi_title: 'By the numbers',
+            //kpi_years_label: 'Years coding',
+            //kpi_projects_label: 'Projects shipped',
+            //kpi_players_label: 'Players reached',
+
+            // About
+            links_title: 'Links',
+            about_title: 'About',
+            about_p1: 'Brazilian graduated in the USA (Full Sail University). I am driven by learning fast, building well and improving with each delivery. I don’t seek to be “just another one”: I want to create gameplay systems that are clear, performant and easy to maintain.',
+            about_p2: 'My objective is simple: to innovate consistently until it becomes a reference.In 10 years I will be in my college hall of fame giving a talk and inspiring people who are sitting where I was sitting 10 years ago.My dreams are the same as yours dreams.',
+            focus_title: 'Focus',
+            stack_title: 'Stack',
 
 
-            },
-            pt: {
-                nav_home: 'Início', nav_about: 'Sobre', nav_skills: 'Habilidades', nav_projects: 'Projetos', nav_experience: 'Experiência', nav_resume: 'Currículo', nav_contact: 'Contato',
-                chip_role: 'Game Developer • Gameplay & Ferramentas', hero_blurb: "Eu projeto e desenvolvo jogos com foco em sensação, performance e arquitetura limpa. Atuo do C++ de engine até Unity/C#, shaders e ferramentas.",
-                cta_view_projects: 'Ver Projetos', cta_contact: 'Fale comigo',
-                kpi_title: 'Em números', kpi_years_label: 'Anos programando', kpi_projects_label: 'Projetos lançados', kpi_players_label: 'Jogadores alcançados',
-                links_title: 'Links',
-                about_title: 'Sobre', about_p1: "Sou um desenvolvedor de jogos que ama publicar gameplay polido e responsivo. Sou obcecado por input feel, câmera e performance. Curto criar ferramentas que aceleram a iteração.",
-                about_p2: "Tecnologias que uso: C++, C#, Unity, ECS (entt), shaders (GLSL/HLSL), Vulkan, Git e ferramentas de perfil. Também construí pequenos backends e brinco com geração procedural.",
-                focus_title: 'Foco', stack_title: 'Stack',
-                skills_title: 'Habilidades',
-                projects_title: 'Projetos', projects_btn: 'Ver tudo no GitHub',
-                p1_desc: 'Wave shooter frenético com armas modulares, spawning e IA. Construído com padrões ECS para escalar e performar.',
-                p2_desc: 'Protótipo de futebol old-school com render BLIT, tilemaps e IA simples. Foco na sensação, colisões e câmera.',
-                p3_desc: 'Renderer de estudo com PBR básico, pós-processamento e marcadores de profile. Foco em abstrações limpas.',
-                exp_title: 'Experiência',
-                resume_title: 'Currículo', resume_blurb: 'Baixe um PDF com experiência, projetos e habilidades.', resume_download: 'Baixar PDF',
-                contact_title: 'Contato', contact_alt: 'Outros', contact_note: 'Aviso', contact_note_p: 'Respondo em 24h. Para resposta mais rápida, indique escopo, plataforma e prazo.',
-                contact_send: 'Enviar', foot_rights: 'Todos os direitos reservados.', exp_jams: 'Game Jams',
-                exp_college: 'Projetos de Faculdade',
-                exp_internship: 'Estágio', background_title: 'Background',
-                background_hobbies: 'Hobbies',
-                background_personality: 'Personalidade',
-                background_books: 'Livros que me inspiram',
-                background_hobby_astro_label: 'Astronomia',
-                background_hobby_astro_text: 'Observação do céu, constelações e astrofotografia básica.',
-                background_hobby_guitar_label: 'Tocar violão',
-                background_hobby_guitar_text: 'Fingerstyle e trilhas sonoras de games.',
-                background_trait_comm: 'Boa comunicação',
-                background_trait_lead: 'Boa liderança',
-                background_trait_time: 'Gestão de tempo e agenda', minigames_title: 'Mini Games',
-                game_snake: 'Snake',
-                game_pong: 'Pong (vs IA)',
-                game_dodge: 'Desvie',
-                start_label: 'Iniciar',
-                reset_label: 'Reiniciar',
-                score_label: 'Pontuação',
-                time_label: 'Tempo',
-                pong_hint: 'Mova com o mouse ou W/S', nav_minigames: 'Mini Games',
+            //background
+            background_title: 'Background',
+            background_hobbies: 'Hobbies',
+            background_personality: 'Personality',
+            background_books: 'Books that inspire me',
 
+            background_hobby_astro_label: 'Astronomy',
+            background_hobby_astro_text: 'Stargazing, constellations, and basic astrophotography.',
+            background_hobby_guitar_label: 'Playing guitar',
+            background_hobby_guitar_text: 'Fingerstyle and game soundtracks.',
 
-            }
+            background_trait_comm: 'Strong communication',
+            background_trait_lead: 'Team leadership',
+            background_trait_time: 'Time management & scheduling',
+
+            // Skills
+            skills_title: 'Skills',
+            skills_engines: 'Engines & Tools',
+            skills_programming: 'Programming',
+            skills_workflow: 'Workflow',
+            skills_engines_desc:
+                'Unity, Unreal, Godot, Blender, Git, Perforce, JetBrains Rider, Visual Studio',
+            skills_programming_desc:
+                'C#, C++, Gameplay Systems, AI/BTs, ECS, Physics, Shaders (HLSL/GLSL), Editor Tools',
+            skills_workflow_desc:
+                'Agile/Scrum, Code Reviews, Profiling, Test Scenes, CI basics, Technical Docs',
+
+            // Projects
+            projects_title: 'Projects',
+            projects_btn: 'See all on GitHub',
+            p1_title: 'Wave Shooter (Unity)',
+            p2_title: 'Old-School Soccer (Unity)',
+            p3_title: 'Vulkan Playground (C++)',
+            p1_desc:
+                'Fast-paced wave shooter with modular weapons, spawning, and AI behaviors. Built with ECS patterns for scalability and performance.',
+            p2_desc:
+                'Old-school soccer prototype with BLIT rendering, tilemaps, and simple AI. Focused on feel, collisions, and camera work.',
+            p3_desc:
+                'Educational renderer with basic PBR, post-processing, and profiling markers. Focus on clean abstractions and debug tooling.',
+            btn_github: 'GitHub',
+            btn_itch: 'Itch.io',
+            btn_video: 'Video',
+
+            // Experience
+            exp_title: 'Experience',
+            exp_jams: 'Game Jams',
+            exp_gamejams: 'Game Jams',      
+            exp_college: 'College Projects',
+            exp_university: 'College Projects',
+            exp_internship: 'Internship',
+
+            // Experience — Intern 
+            intern_role: 'Prompt Engineer / Gameplay Programmer — DJDE',
+            intern_location: 'Rio de Janeiro, Brazil',
+            intern_summary:
+                'Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support, focusing on prompt engineering mastery, faster iteration, and documenting technical decisions.',
+            intern_b1_label: 'Prompt engineering (GPT-4):',
+            intern_b1_text:
+                'Created effective prompts, reviewed/adapted AI-suggested code, documented decisions, and integrated solutions into Unity.',
+            intern_b2_label: 'Gameplay:',
+            intern_b2_text:
+                'Implemented turn loop, move validation, win/draw checks, and a power-up system in C#.',
+            intern_b3_label: 'UI/UX:',
+            intern_b3_text:
+                'Built menus, HUD, and visual feedback; wired UI events to game state.',
+            intern_b4_label: 'Integration & Quality:',
+            intern_b4_text:
+                'Organized scenes/prefabs, standardized scripts, reviewed PRs, and kept testing builds stable.',
+            intern_stack:
+                'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
+
+            // Resume
+            resume_title: 'Resume / CV',
+            resume_blurb: 'Grab a printable PDF with experience, projects, and skills.',
+            resume_download: 'Download PDF',
+
+            // Contact
+            contact_title: 'Contact',
+            contact_alt: 'Elsewhere',
+            contact_note: 'Note',
+            contact_note_p:
+                'I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.',
+            contact_send: 'Send',
+            contact_name_ph: 'Name',
+            contact_email_ph: 'Email',
+            contact_msg_ph: 'Message',
+
+            // Footer
+            foot_rights: 'All rights reserved.',
+
+            // Mini games
+            minigames_title: 'Mini Games',
+            game_snake: 'Snake',
+            game_pong: 'Pong (vs AI)',
+            game_dodge: 'Dodge',
+            start_label: 'Start',
+            reset_label: 'Reset',
+            score_label: 'Score',
+            time_label: 'Time',
+            pong_hint: 'Move with mouse or W/S',
         };
+
+        // --- EN overrides 
+        const EN = {
+          
+        };
+
+        // --- ES overrides ------------------------------------------------------------
+        const ES = {
+            nav_home: 'Inicio',
+            nav_about: 'Sobre\u00A0mí',         
+            nav_skills: 'Habilidades',
+            nav_projects: 'Proyectos',
+            nav_experience: 'Experiencia',
+            nav_resume: 'CV',
+            nav_contact: 'Contacto',
+            nav_minigames: 'Mini\u00A0juegos',  
+
+            cta_view_projects: 'Ver Proyectos',
+            cta_contact: 'Contáctame',
+
+            chip_role: 'Desarrollador de Juegos • Gameplay y Herramientas',
+            hero_blurb:'Hago que la programación sea divertida, como desafiarme a mí mismo a crear un juego simplemente usando Notepad y Paint.',
+
+            //kpi_title: 'En números',
+            //kpi_years_label: 'Años programando',
+            //kpi_projects_label: 'Proyectos publicados',
+            //kpi_players_label: 'Jugadores alcanzados',
+
+            links_title: 'Enlaces',
+            about_title: 'Sobre mí',
+            about_p1: 'Brasileño graduado en Estados Unidos (Full Sail University). Me motiva aprender rápido, construir bien y mejorar con cada entrega. No busco ser “uno más”: quiero crear sistemas de juego que sean claros, eficaces y fáciles de mantener.',
+            about_p2: 'Mi objetivo es simple: innovar consistentemente hasta convertirme en un referente. En 10 años estaré en el salón de la fama de mi universidad dando una charla e inspirando a las personas que están sentadas donde yo estaba hace 10 años. Mis sueños son los mismos que los tuyos.',
+            focus_title: 'Enfoque',
+            stack_title: 'Stack',
+
+         
+         
+
+            // Background
+            background_title: 'Trayectoria',
+            background_hobbies: 'Aficiones',
+            background_personality: 'Personalidad',
+            background_books: 'Libros que me inspiran',
+
+            background_hobby_astro_label: 'Astronomía',
+            background_hobby_astro_text: 'Observación del cielo, constelaciones y astrofotografía básica.',
+            background_hobby_guitar_label: 'Tocar la guitarra',
+            background_hobby_guitar_text: 'Fingerstyle y bandas sonoras de juegos.',
+
+            background_trait_comm: 'Comunicación sólida',
+            background_trait_lead: 'Liderazgo de equipo',
+            background_trait_time: 'Gestión del tiempo y planificación',
+
+
+
+            skills_title: 'Habilidades',
+            skills_engines: 'Motores y Herramientas',
+            skills_programming: 'Programación',
+            skills_workflow: 'Flujo de trabajo',
+            skills_engines_desc:
+                'Unity, Unreal, Godot, Blender, Git, Perforce, JetBrains Rider, Visual Studio',
+            skills_programming_desc:
+                'C#, C++, Sistemas de gameplay, IA/BTs, ECS, Física, Shaders (HLSL/GLSL), Herramientas de editor',
+            skills_workflow_desc:
+                'Ágil/Scrum, Revisiones de código, Perfilado, Escenas de prueba, CI básico, Docs técnicas',
+
+            projects_title: 'Proyectos',
+            projects_btn: 'Ver todo en GitHub',
+            p2_title: 'Fútbol Retro (Unity)',
+            p1_desc:
+                'Wave shooter rápido con armas modulares, spawning y IA. Construido con patrones ECS para escalar y rendir.',
+            p2_desc:
+                'Prototipo retro de fútbol con render BLIT, tilemaps e IA simple. Enfoque en sensación, colisiones y cámara.',
+            p3_desc:
+                'Renderer educativo con PBR básico, post-proceso y marcadores de perfilado. Enfoque en abstracciones limpias.',
+
+            exp_title: 'Experiencia',
+            exp_college: 'Proyectos universitarios',
+            exp_university: 'Proyectos universitarios',
+            exp_internship: 'Pasantía',
+
+            resume_title: 'CV',
+            resume_blurb:
+                'Descarga un PDF imprimible con experiencia, proyectos y habilidades.',
+            resume_download: 'Descargar PDF',
+
+            contact_title: 'Contacto',
+            contact_alt: 'Redes',
+            contact_note: 'Nota',
+            contact_note_p:
+                'Suelo responder en 24h. Para respuestas rápidas, menciona alcance, plataforma y tiempo.',
+            contact_send: 'Enviar',
+            contact_name_ph: 'Nombre',
+            contact_email_ph: 'Correo',
+            contact_msg_ph: 'Mensaje',
+
+            foot_rights: 'Todos los derechos reservados.',
+
+            minigames_title: 'Mini juegos',
+            game_pong: 'Pong (vs IA)',
+            game_dodge: 'Esquivar',
+            start_label: 'Iniciar',
+            reset_label: 'Reiniciar',
+            score_label: 'Puntuación',
+            time_label: 'Tiempo',
+            pong_hint: 'Mueve con el mouse o W/S',
+
+            // Intern
+            intern_role: 'Prompt Engineer / Programador de Gameplay — DJDE',
+            intern_location: 'Río de Janeiro, Brasil',
+            intern_summary:
+                'Prototipo de tres en raya 3D en Unity/C# desarrollado 100% con apoyo de ChatGPT-4, enfocado en dominar prompt engineering, acelerar iteraciones y documentar decisiones técnicas.',
+            intern_b1_label: 'Prompt engineering (GPT-4):',
+            intern_b1_text:
+                'Creación de prompts efectivos, revisión/adaptación del código sugerido por la IA, documentación de decisiones e integración en Unity.',
+            intern_b2_label: 'Gameplay:',
+            intern_b2_text:
+                'Bucle de turnos, validación de movimientos, chequeo de victoria/empate y sistema de power-ups en C#.',
+            intern_b3_label: 'UI/UX:',
+            intern_b3_text:
+                'Creación de menús, HUD y feedback visual; conexión de eventos de UI al estado del juego.',
+            intern_b4_label: 'Integración y Calidad:',
+            intern_b4_text:
+                'Organización de escenas/prefabs, estandarización de scripts, revisión de PRs y builds estables para pruebas.',
+            intern_stack:
+                'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
+        };
+
+        // --- PT overrides ------------------------------------------------------------
+        const PT = {
+            nav_home: 'Início',
+            nav_about: 'Sobre',             
+            nav_skills: 'Habilidades',
+            nav_projects: 'Projetos',
+            nav_experience: 'Experiência',
+            nav_resume: 'Currículo',
+            nav_contact: 'Contato',
+            nav_minigames: 'Mini\u00A0Jogos', 
+
+            chip_role: 'Game Developer • Gameplay & Ferramentas',
+            hero_blurb:'Eu torno a programação divertida, como me desafiar a fazer um jogo apenas usando o Bloco de Notas e o Paint.',
+
+            //kpi_title: 'Em números',
+            //kpi_years_label: 'Anos programando',
+            //kpi_projects_label: 'Projetos lançados',
+            //kpi_players_label: 'Jogadores alcançados',
+
+            cta_view_projects: 'Ver Projetos',
+            cta_contact: 'Fale comigo',
+
+
+            links_title: 'Links',
+            about_title: 'Sobre',
+            about_p1: 'Brasileiro formado nos EUA (Full Sail University). Sou motivado por aprender rápido, construir bem e melhorar a cada entrega. Não procuro ser “apenas mais um”: quero criar sistemas de jogo que sejam claros, de alto desempenho e fáceis de manter.',
+            about_p2: 'Meu objetivo é simples: inovar consistentemente até se tornar referência. Daqui a 10 anos estarei no hall da fama da minha faculdade dando uma palestra e inspirando pessoas que estão sentadas onde eu estava há 10 anos. Meus sonhos são os mesmos que ao seus sonhos.',
+            focus_title: 'Foco',
+            stack_title: 'Stack',
+
+            background_title: 'Background',
+            background_hobbies: 'Hobbies',
+            background_personality: 'Personalidade',
+            background_books: 'Livros que me inspiram',
+
+            background_hobby_astro_label: 'Astronomia',
+            background_hobby_astro_text: 'Observação do céu, constelações e astrofotografia básica.',
+            background_hobby_guitar_label: 'Tocar violão',
+            background_hobby_guitar_text: 'Fingerstyle e trilhas sonoras de games.',
+
+            background_trait_comm: 'Boa comunicação',
+            background_trait_lead: 'Boa liderança',
+            background_trait_time: 'Gestão de tempo e agenda',
+
+            skills_title: 'Habilidades',
+            skills_engines: 'Motores & Ferramentas',
+            skills_programming: 'Programação',
+            skills_workflow: 'Fluxo de trabalho',
+            skills_engines_desc:
+                'Unity, Unreal, Godot, Blender, Git, Perforce, JetBrains Rider, Visual Studio',
+            skills_programming_desc:
+                'C#, C++, Sistemas de gameplay, IA/BTs, ECS, Física, Shaders (HLSL/GLSL), Ferramentas de editor',
+            skills_workflow_desc:
+                'Ágil/Scrum, Revisões de código, Profiling, Cenas de teste, CI básico, Docs técnicas',
+
+            projects_title: 'Projetos',
+            projects_btn: 'Ver tudo no GitHub',
+            p2_title: 'Futebol Retrô (Unity)',
+            p1_desc:
+                'Wave shooter frenético com armas modulares, spawning e IA. Construído com padrões ECS para escalar e performar.',
+            p2_desc:
+                'Protótipo de futebol old-school com render BLIT, tilemaps e IA simples. Foco na sensação, colisões e câmera.',
+            p3_desc:
+                'Renderer de estudo com PBR básico, pós-processamento e marcadores de profile. Foco em abstrações limpas.',
+
+            exp_title: 'Experiência',
+            exp_college: 'Projetos de Faculdade',
+            exp_university: 'Projetos universitários',
+            exp_internship: 'Estágio',
+
+            resume_title: 'Currículo',
+            resume_blurb:
+                'Baixe um PDF com experiência, projetos e habilidades.',
+            resume_download: 'Baixar PDF',
+
+            contact_title: 'Contato',
+            contact_alt: 'Outros',
+            contact_note: 'Aviso',
+            contact_note_p:
+                'Respondo em 24h. Para resposta mais rápida, indique escopo, plataforma e prazo.',
+            contact_send: 'Enviar',
+            contact_name_ph: 'Nome',
+            contact_email_ph: 'Email',
+            contact_msg_ph: 'Mensagem',
+
+            foot_rights: 'Todos os direitos reservados.',
+
+            minigames_title: 'Mini Jogos',
+            game_pong: 'Pong (vs IA)',
+            game_dodge: 'Desvie',
+            start_label: 'Iniciar',
+            reset_label: 'Reiniciar',
+            score_label: 'Pontuação',
+            time_label: 'Tempo',
+            pong_hint: 'Mova com o mouse ou W/S',
+
+            // Intern
+            intern_role: 'Prompt Engineer / Programador de Gameplay — DJDE',
+            intern_location: 'Rio de Janeiro, Brasil',
+            intern_summary:
+                'Prototipagem de jogo da velha 3D em Unity/C# desenvolvida 100% com apoio do ChatGPT-4, focando em dominar prompt engineering, acelerar iterações e documentar decisões técnicas.',
+            intern_b1_label: 'Prompt engineering (GPT-4):',
+            intern_b1_text:
+                'Criação de prompts eficazes, revisão/adoção do código sugerido pela IA, documentação de decisões e integração no projeto Unity.',
+            intern_b2_label: 'Gameplay:',
+            intern_b2_text:
+                'Loop de turnos, validação de movimentos, checagem de vitória/empate e sistema de power-ups em C#.',
+            intern_b3_label: 'UI/UX:',
+            intern_b3_text:
+                'Criação de menus, HUD e feedback visual; conexão de eventos de UI com o estado do jogo.',
+            intern_b4_label: 'Integração & Qualidade:',
+            intern_b4_text:
+                'Organização de cenas/prefabs, padronização de scripts, revisão de PRs e builds estáveis para testes.',
+            intern_stack:
+                'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
+        };
+
+        
+        const dict = Object.freeze({
+            en: { ...BASE, ...EN },
+            es: { ...BASE, ...ES },
+            pt: { ...BASE, ...PT },
+        });
+
+        
 
         function applyLang(lang) {
             const strings = dict[lang] || dict.en;
+
+           
             document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (strings[key]) el.textContent = strings[key];
+                const k = el.getAttribute('data-i18n');
+                if (strings[k]) el.textContent = strings[k];
             });
+
+            
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const k = el.getAttribute('data-i18n-placeholder');
+                if (strings[k]) el.setAttribute('placeholder', strings[k]);
+            });
+
             localStorage.setItem('lang', lang);
-            document.querySelectorAll('.flag').forEach(f => f.classList.toggle('active', f.dataset.lang === lang));
+            document.querySelectorAll('.flag').forEach(f =>
+                f.classList.toggle('active', f.dataset.lang === lang)
+            );
         }
 
         const savedLang = localStorage.getItem('lang');
