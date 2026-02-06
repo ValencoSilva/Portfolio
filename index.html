@@ -10,16 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0b1220; /* deeper blue-black */
-            --bg-soft: #0f1725; /* section background */
-            --muted: #1b2534; /* subtle borders */
-            --card: #0f1621; /* cards */
+            --bg: #0b1220; 
+            --bg-soft: #0f1725;
+            --muted: #1b2534;
+            --card: #0f1621;
             --text: #e6edf3;
             --text-dim: #b5c0cc;
-            --brand: #22d3ee; /* cyan accent */
+            --brand: #22d3ee; 
             --accent: #8b5cf6;
-            --brand-blue: #2563eb; /* bright link/buttons */
-            --text-copy-blue: #93c5fd; /* paragraph color */
+            --brand-blue: #2563eb; 
+            --text-copy-blue: #93c5fd; 
             --ok: #22c55e;
             --warn: #f59e0b;
             --danger: #ef4444;
@@ -430,6 +430,29 @@
             border: 1px solid var(--muted)
         }
 
+        /* Project thumbnail */
+        .proj-thumb {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            background: #0b1220;
+        }
+
+            .proj-thumb img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+        /* Subtle hover effect */
+        .projcard:hover .proj-thumb img {
+            transform: scale(1.03);
+        }
+
+
         .img-card svg {
             width: 100%;
             height: auto;
@@ -647,18 +670,16 @@
             white-space: nowrap;
             border: 0
         }
-        /* ===========================
-   MOBILE RESPONSIVE OVERRIDES
-   =========================== */
+     
 
-        /* --- Generic tweaks for smaller screens --- */
+        
         @media (max-width: 960px) {
-            /* Layout containers */
+            
             .container {
                 padding: 0 16px;
             }
 
-            /* Hero spacing and type scale */
+           
             .hero {
                 padding: 56px 0 28px;
             }
@@ -667,24 +688,24 @@
                 font-size: clamp(32px, 7vw, 48px);
             }
 
-            /* Two-column grids -> one column */
+           
             .grid-2,
             .contact {
                 grid-template-columns: 1fr !important;
             }
 
-            /* Projects / skills grids -> single column stacks */
+           
             .projgrid,
             .skillgrid {
                 grid-template-columns: 1fr !important;
             }
 
-            /* Skills grid: 2 columns on tablets */
+            
             .skills {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
 
-            /* Section header spacing */
+            
             .section-title {
                 gap: 12px;
                 margin-bottom: 14px;
@@ -694,33 +715,32 @@
                     font-size: 28px;
                 }
 
-            /* Make the hero right card breathe */
+           
             .img-card {
                 margin-top: 8px;
             }
 
-            /* Keep "Focus" pills visually balanced vs "Stack" */
+            
             .badges.equalize {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            /* Experience lists: taller on mobile and smooth scroll */
             #experience .scroll-wrap {
-                max-height: 50vh; /* give more room on small screens */
+                max-height: 50vh;
                 padding-right: 4px;
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Footer: center content */
+            
             .footer .container {
                 flex-direction: column;
                 gap: 10px;
             }
         }
 
-        /* --- Very small phones --- */
+       
         @media (max-width: 520px) {
-            /* Tighten typography slightly */
+         
             .title-md {
                 font-size: 20px;
             }
@@ -729,17 +749,17 @@
                 font-size: 36px;
             }
 
-            /* Skills grid: 1 column when ultra-narrow */
+           
             .skills {
                 grid-template-columns: 1fr !important;
             }
 
-            /* Focus badges: single column to avoid wrapping misalignment */
+            
             .badges.equalize {
                 grid-template-columns: 1fr;
             }
 
-            /* Reduce inner paddings to fit better */
+          
             .card.pad {
                 padding: 16px;
             }
@@ -748,7 +768,7 @@
                 padding: 10px 14px;
             }
 
-            /* Books list: single column */
+        
             #background .books {
                 columns: 1 !important;
             }
@@ -756,15 +776,13 @@
           
         }
 
-        /* ===========================
-   NAV: make links scrollable (no wrapping)
-   =========================== */
+       
         header {
             background: linear-gradient(to bottom, rgba(11,15,20,.95), rgba(11,15,20,.65), transparent);
         }
 
         .nav {
-            display: flex; /* ensure flex on all sizes */
+            display: flex; 
             align-items: center;
             justify-content: space-between;
             gap: 10px;
@@ -775,15 +793,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            overflow-x: auto; /* horizontal scroll on small screens */
+            overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin; /* Firefox */
+            scrollbar-width: thin; 
             padding-bottom: 4px;
             max-width: 100%;
         }
 
             .nav-links a {
-                white-space: nowrap; /* keep each label on one line */
+                white-space: nowrap; 
                 scroll-snap-align: start;
             }
 
@@ -795,7 +813,6 @@
             }
         }
 
-        /* Optional: subtle scrollbar styling on WebKit */
         .nav-links::-webkit-scrollbar {
             height: 6px;
         }
@@ -805,7 +822,7 @@
             border-radius: 999px;
         }
 
-        /* Flags + theme toggle: keep compact and aligned */
+      
         #langSwitch {
             display: inline-flex;
             gap: 6px;
@@ -826,9 +843,7 @@
                 height: 1.1em;
             }
 
-        /* ===========================
-   CANVAS & SVG: mobile fit
-   =========================== */
+
         canvas.minigame {
             width: 100% !important;
             height: auto !important;
@@ -838,15 +853,13 @@
             background: #0b1220;
         }
 
-        /* Ensure project preview SVGs don’t overflow */
+
         .projcard .shot svg {
             width: 100%;
             height: auto;
         }
 
-        /* ===========================
-   ABOUT: ensure Focus vs Stack feel consistent
-   =========================== */
+  
         #about .grid > .card.pad {
             height: 100%;
         }
@@ -855,8 +868,7 @@
             text-align: center;
         }
 
-        /* ===========================
-   EXPERIENCE: touch targets
+
    =========================== */
         #experience summary {
             padding: 14px 16px;
@@ -866,17 +878,13 @@
             min-height: 36px;
         }
 
-        /* ===========================
-   HERO pills wrap better
-   =========================== */
+ 
         .pills {
             row-gap: 8px;
             column-gap: 8px;
         }
 
-        /* ===========================
-   Forms: larger tap targets
-   =========================== */
+ 
         .input {
             min-height: 44px;
         }
@@ -885,9 +893,7 @@
             min-height: 120px;
         }
 
-        /* ===========================
-   Misc safe clamps
-   =========================== */
+   
         .title-xxl {
             word-break: break-word;
         }
@@ -963,17 +969,17 @@
                             </filter>
                         </defs>
 
-                        <!-- window frame -->
+                
                         <rect x="12" y="12" rx="20" ry="20" width="796" height="496" fill="url(#codebg)" stroke="#223044" />
                         <rect x="12" y="12" rx="20" ry="20" width="796" height="60" fill="#0d1524" stroke="#223044" />
-                        <!-- traffic lights -->
+                      
                         <circle cx="44" cy="42" r="8" fill="#ef4444" />
                         <circle cx="70" cy="42" r="8" fill="#f59e0b" />
                         <circle cx="96" cy="42" r="8" fill="#22c55e" />
-                        <!-- subtle glow overlay -->
+                        
                         <rect x="12" y="72" width="796" height="436" fill="url(#glow)" />
 
-                        <!-- gutters -->
+                       
                         <rect x="12" y="72" width="64" height="436" fill="#0d1524" />
                         <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="18" fill="#64748b">
                             <text x="48" y="110" text-anchor="end">1</text>
@@ -990,7 +996,7 @@
                             <text x="48" y="440" text-anchor="end">12</text>
                         </g>
 
-                        <!-- code lines -->
+                   
                         <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="20">
                             <text x="92" y="110" fill="#7dd3fc">// gameplay script</text>
                             <text x="92" y="140" fill="#a78bfa"><tspan fill="#22d3ee">class</tspan> PlayerController <tspan fill="#93c5fd">{</tspan></text>
@@ -1080,7 +1086,7 @@
                         </ul>
                     </div>
 
-                    <!-- Personality (no lugar da “história com games”) -->
+                    <!-- Personality -->
                     <div class="card pad">
                         <h3 class="title-md" data-i18n="background_personality">Personality</h3>
                         <ul class="muted">
@@ -1095,10 +1101,10 @@
                 <div class="card pad" style="margin-top:20px">
                     <h3 class="title-md" data-i18n="background_books">Books that inspire me</h3>
                     <ul class="muted books">
-                        <li>📘 <span>Blood, Sweat, and Pixels</span> — Jason Schreier</li>
+                        <li>📘 <span>A Theory Of Fun For Game Design</span> — Raph Koster</li>
                         <li>📗 <span>The Art of Game Design</span> — Jesse Schell</li>
-                        <li>📙 <span>Rules of Play</span> — Katie Salen & Eric Zimmerman</li>
-                        <li>📕 <span>Replay: The History of Video Games</span> — Tristan Donovan</li>
+                        <li>📙 <span>Game Programming Patterns</span> — Robert Nystrom</li>
+                        <li>📕 <span>Game Engine Architecture, 3rd Edition</span> — Jason Gregory</li>
                     </ul>
                 </div>
             </div>
@@ -1149,597 +1155,506 @@
                     columns: 2;
                 }
             }
-        </style>
+          
+            #experience .xp-card {
+                background: var(--card);
+                border: 1px solid var(--muted);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                padding: 16px;
+            }
 
+           
+            .project-sub {
+                margin-top: 18px;
+            }
 
-        <!-- SKILLS -->
-        <!--<section id="skills">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="section-h">Skills</h2><div class="rule"></div>
-                </div>
-
-                <div class="grid" style="gap:14px; grid-template-columns: repeat(3,1fr);">-->
-        <!-- Gameplay -->
-        <!--<div class="card pad">
-            <h3 class="title-md">Gameplay</h3>
-            <ul class="muted">
-                <li><b>C# (Unity)</b> — Avançado • ≤12m • <a href="#projects">repo/demo</a></li>
-                <li><b>C++ (Unreal)</b> — Intermediário • ≤6m</li>
-                <li><b>BTs / FSM / Input&Camera</b> — Avançado</li>
-            </ul>
-        </div>-->
-        <!-- AI / Tools -->
-        <!--<div class="card pad">
-            <h3 class="title-md">AI & Tools</h3>
-            <ul class="muted">
-                <li><b>Behaviour Trees / NavMesh</b> — Intermediário • ≤12m</li>
-                <li><b>Editor Tools (Unity)</b> — Avançado • ≤6m</li>
-                <li><b>Profiling / Debug UI</b> — Avançado</li>
-            </ul>
-        </div>-->
-        <!-- Rendering -->
-        <!--<div class="card pad">
-                        <h3 class="title-md">Rendering</h3>
-                        <ul class="muted">
-                            <li><b>Shaders (HLSL/GLSL)</b> — Intermediário • ≤12m</li>
-                            <li><b>Vulkan (C++)</b> — Estudo • ≤12m • <a href="#projects">devlog</a></li>
-                            <li><b>Post / Lighting / Materials</b> — Intermediário</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!-- PROJECTS -->
-        <section id="projects">
-            <div class="container">
-                <div class="section-title"><h2 class="section-h" data-i18n="projects_title">Projects</h2><div class="rule"></div></div>
-                <div class="projgrid">
-                    <article class="projcard">
-                        <div class="shot">
-                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
-                                        <stop offset="0" stop-color="#0b1220" />
-                                        <stop offset="1" stop-color="#0f1725" />
-                                    </linearGradient>
-                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
-                                        <rect width="40" height="40" fill="#111827" />
-                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
-                                    </pattern>
-                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
-                                    </filter>
-                                </defs>
-                                <rect width="800" height="450" fill="url(#bg)" />
-                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
-                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
-                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
-                            </svg>
-                        </div>
-                        <div><strong data-i18n="p1_title">Wave Shooter (Unity)</strong></div>
-                        <p class="muted" data-i18n="p1_desc">
-                            Fast-paced wave shooter with modular weapons, spawning, and AI behaviors...
-                        </p>
-                        <div class="btn-row">
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_itch">Itch.io</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
-                        </div>
-                    </article>
-                    <article class="projcard">
-                        <div class="shot">
-                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
-                                        <stop offset="0" stop-color="#0b1220" />
-                                        <stop offset="1" stop-color="#0f1725" />
-                                    </linearGradient>
-                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
-                                        <rect width="40" height="40" fill="#111827" />
-                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
-                                    </pattern>
-                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
-                                    </filter>
-                                </defs>
-                                <rect width="800" height="450" fill="url(#bg)" />
-                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
-                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
-                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
-                            </svg>
-                        </div>
-                        <div><strong data-i18n="p2_title">Old-School Soccer (Unity)</strong></div>
-                        <p class="muted" data-i18n="p2_desc">
-                            Retro 3D soccer with tight controls, UI in Figma, and progression...
-                        </p>
-                        <div class="btn-row">
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_itch">Itch.io</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
-                        </div>
-                    </article>
-                    <article class="projcard">
-                        <div class="shot">
-                            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
-                                        <stop offset="0" stop-color="#0b1220" />
-                                        <stop offset="1" stop-color="#0f1725" />
-                                    </linearGradient>
-                                    <pattern id="stripes" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
-                                        <rect width="40" height="40" fill="#111827" />
-                                        <rect x="0" y="0" width="20" height="40" fill="#f59e0b" opacity="0.85" />
-                                    </pattern>
-                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.6" />
-                                    </filter>
-                                </defs>
-                                <rect width="800" height="450" fill="url(#bg)" />
-                                <rect x="0" y="22" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="0" y="318" width="800" height="110" fill="url(#stripes)" />
-                                <rect x="80" y="120" rx="20" ry="20" width="640" height="210" fill="#0b1220" stroke="#374151" filter="url(#shadow)" />
-                                <text x="400" y="210" text-anchor="middle" font-family="Inter,system-ui" font-size="48" fill="#e5e7eb" font-weight="800">WORK IN PROGRESS</text>
-                                <text x="400" y="252" text-anchor="middle" font-family="Inter,system-ui" font-size="22" fill="#93c5fd">Preview coming soon</text>
-                            </svg>
-                        </div>
-                        <div><strong data-i18n="p3_title">Vulkan Playground (C++)</strong></div>
-                        <p class="muted" data-i18n="p3_desc">
-                            Custom rasterizer, world/view/projection, lighting, and starfield...
-                        </p>
-                        <div class="btn-row">
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_github">GitHub</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_devlog">Itch.io</a>
-                            <a class="btn" href="#" target="_blank" data-i18n="btn_video">Video</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <!-- MINI GAMES -->
-        <section id="minigames">
-            <style>
-                #minigames .games-grid {
-                    display: grid;
-                    gap: 18px;
-                    grid-template-columns: 1fr;
+                .project-sub h3 {
+                    margin: 0 0 10px;
+                    font-size: 20px;
+                    font-weight: 800;
                 }
 
-                @media (min-width: 900px) {
-                    #minigames .games-grid {
-                        grid-template-columns: repeat(3,1fr);
-                    }
-                }
+           
+            .projgrid.auto {
+                display: grid;
+                gap: 18px;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
 
-                .game-card {
-                    background: var(--card);
-                    border: 1px solid var(--muted);
-                    border-radius: 16px;
-                    box-shadow: var(--shadow);
-                    padding: 14px;
-                }
+          
+            .projcard {
+                padding: 18px;
+                border-radius: 18px;
+                background: radial-gradient(140% 140% at 100% 0%, rgba(37,99,235,.06) 0%, rgba(0,0,0,0) 42%), var(--card);
+                border: 1px solid #223044;
+                box-shadow: 0 10px 28px rgba(2,6,23,.45), inset 0 0 0 1px rgba(34,211,238,.05);
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
 
-                    .game-card h3 {
-                        margin: 0 0 8px;
-                        font-size: 18px;
-                    }
+           
+            details.collapsible {
+                background: var(--card);
+                border: 1px solid var(--muted);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                padding: 0;
+            }
 
-                .game-ui {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin: 8px 0 10px;
-                }
-
-                    .game-ui .btn {
-                        padding: 6px 10px;
-                        border-radius: 10px;
-                        border: 1px solid var(--muted);
-                        background: var(--bg-soft);
-                    }
-
-                        .game-ui .btn.primary {
-                            background: linear-gradient(180deg,#22d3ee,#8b5cf6);
-                            color: #0b1220;
-                            font-weight: 700;
-                            border: none;
-                        }
-
-                .stat {
-                    color: var(--text-dim);
-                }
-
-                .game-wrap {
-                    background: #0c1321;
-                    border: 1px solid var(--muted);
-                    border-radius: 12px;
-                    padding: 8px;
-                }
-
-                canvas.minigame {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                    image-rendering: pixelated;
-                    border-radius: 8px;
-                    background: #0b1220;
-                }
-
-                canvas.minigame {
-                    touch-action: none;
-                }
-            </style>
-
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="section-h" data-i18n="minigames_title">Mini Games</h2>
-                    <div class="rule"></div>
-                </div>
-
-                <div class="games-grid">
-
-                    <!-- SNAKE -->
-                    <div class="game-card">
-                        <h3 data-i18n="game_snake">Snake</h3>
-                        <div class="game-ui">
-                            <button id="snStart" class="btn primary" data-i18n="start_label">Start</button>
-                            <button id="snReset" class="btn" data-i18n="reset_label">Reset</button>
-                            <span class="stat"><span data-i18n="score_label">Score</span>: <b id="snScore">0</b></span>
-                        </div>
-                        <div class="game-wrap">
-                            <canvas id="snake" class="minigame" width="400" height="280" aria-label="Snake"></canvas>
-                        </div>
-                        <p class="muted small">← ↑ → ↓</p>
-                    </div>
-
-                    <!-- PONG (Player vs AI) -->
-                    <div class="game-card">
-                        <h3 data-i18n="game_pong">Pong (vs AI)</h3>
-                        <div class="game-ui">
-                            <button id="pgStart" class="btn primary" data-i18n="start_label">Start</button>
-                            <button id="pgReset" class="btn" data-i18n="reset_label">Reset</button>
-                            <span class="stat"><span data-i18n="score_label">Score</span>: <b id="pgScore">0–0</b></span>
-                        </div>
-                        <div class="game-wrap">
-                            <canvas id="pong" class="minigame" width="420" height="280" aria-label="Pong"></canvas>
-                        </div>
-                        <p class="muted small" data-i18n="pong_hint">Move with mouse or W/S</p>
-                    </div>
-
-                    <!-- DODGE -->
-                    <div class="game-card">
-                        <h3 data-i18n="game_dodge">Dodge</h3>
-                        <div class="game-ui">
-                            <button id="dgStart" class="btn primary" data-i18n="start_label">Start</button>
-                            <button id="dgReset" class="btn" data-i18n="reset_label">Reset</button>
-                            <span class="stat"><span data-i18n="time_label">Time</span>: <b id="dgTime">0.0s</b></span>
-                        </div>
-                        <div class="game-wrap">
-                            <canvas id="dodge" class="minigame" width="420" height="280" aria-label="Dodge"></canvas>
-                        </div>
-                        <p class="muted small">W A S D</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- EXPERIENCE -->
-        <section id="experience">
-
-            <style>
-                #experience .exp-cat {
-                    margin-bottom: 16px;
-                }
-
-                #experience details {
-                    background: var(--card);
-                    border: 1px solid var(--muted);
-                    border-radius: 14px;
-                    box-shadow: var(--shadow);
-                }
-
-                #experience summary {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    list-style: none;
+                details.collapsible > summary {
+                    user-select: none;
                     cursor: pointer;
+                    list-style: none;
                     padding: 14px 16px;
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
                 }
 
-                    #experience summary::-webkit-details-marker {
+                    details.collapsible > summary::-webkit-details-marker {
                         display: none;
                     }
 
-                    #experience summary .chev {
+                    details.collapsible > summary .chev {
                         margin-left: auto;
                         transition: transform .2s;
                     }
 
-                #experience details[open] summary .chev {
+                details.collapsible[open] > summary .chev {
                     transform: rotate(90deg);
                 }
 
-                #experience .exp-list {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: 12px;
+                details.collapsible .inner {
                     padding: 0 16px 16px;
                 }
 
-                @media(min-width: 900px) {
-                    #experience .exp-list {
-                        grid-template-columns: 1fr 1fr;
-                    }
-                }
-
-                #experience .exp-item {
-                    padding: 12px;
-                    border-radius: 12px;
-                    background: var(--bg-soft);
-                    border: 1px solid var(--muted);
-                }
-
-                #experience .row {
-                    display: flex;
-                    align-items: center;
-                }
-
-                #experience .right {
-                    margin-left: auto;
-                    color: var(--text-dim);
-                }
-
-                #experience .muted {
-                    color: var(--text-dim);
-                }
-
-                #experience .links a {
-                    margin-right: 8px;
-                }
+         
+            .tbd {
+                padding: 10px 12px;
+                border: 1px dashed var(--muted);
+                border-radius: 10px;
+                color: var(--text-dim);
+                background: var(--bg-soft);
+                font-size: 14px;
+            }
+        </style>
 
 
-                #experience .scroll-wrap {
-                    max-height: 260px;
-                    overflow: auto;
-                    padding-right: 6px;
-                    scroll-behavior: smooth;
-                    border-radius: 12px;
-                }
 
-                /* Botão XS  ▲/▼ */
-                .btn.xs {
-                    padding: 6px 10px;
-                    font-size: 12px;
-                    line-height: 1;
-                    border-radius: 10px;
-                }
 
-                /* Scrollbar  (WebKit) */
-                #experience .scroll-wrap::-webkit-scrollbar {
-                    width: 10px;
-                }
+        <!-- SKILLS -->
+        <!--<section id="skills">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="section-h">Skills</h2><div class="rule"></div>
+        </div>
 
-                #experience .scroll-wrap::-webkit-scrollbar-track {
-                    background: var(--bg-soft);
-                    border-radius: 10px;
-                }
+        <div class="grid" style="gap:14px; grid-template-columns: repeat(3,1fr);">-->
+        <!-- Gameplay -->
+        <!--<div class="card pad">
+        <h3 class="title-md">Gameplay</h3>
+        <ul class="muted">
+            <li><b>C# (Unity)</b> — Avançado • ≤12m • <a href="#projects">repo/demo</a></li>
+            <li><b>C++ (Unreal)</b> — Intermediário • ≤6m</li>
+            <li><b>BTs / FSM / Input&Camera</b> — Avançado</li>
+        </ul>
+    </div>-->
+        <!-- AI / Tools -->
+        <!--<div class="card pad">
+        <h3 class="title-md">AI & Tools</h3>
+        <ul class="muted">
+            <li><b>Behaviour Trees / NavMesh</b> — Intermediário • ≤12m</li>
+            <li><b>Editor Tools (Unity)</b> — Avançado • ≤6m</li>
+            <li><b>Profiling / Debug UI</b> — Avançado</li>
+        </ul>
+    </div>-->
+        <!-- Rendering -->
+        <!--<div class="card pad">
+                    <h3 class="title-md">Rendering</h3>
+                    <ul class="muted">
+                        <li><b>Shaders (HLSL/GLSL)</b> — Intermediário • ≤12m</li>
+                        <li><b>Vulkan (C++)</b> — Estudo • ≤12m • <a href="#projects">devlog</a></li>
+                        <li><b>Post / Lighting / Materials</b> — Intermediário</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>-->
 
-                #experience .scroll-wrap::-webkit-scrollbar-thumb {
-                    background: linear-gradient(180deg, var(--brand), var(--accent));
-                    border-radius: 10px;
-                    border: 2px solid var(--bg-soft);
-                }
-
-                /* Firefox */
-                #experience .scroll-wrap {
-                    scrollbar-color: var(--accent) var(--bg-soft);
-                    scrollbar-width: thin;
-                }
-            </style>
-
+        <!-- PROJECTS -->
+        <section id="projects">
             <div class="container">
                 <div class="section-title">
-                    <h2 class="section-h" data-i18n="exp_title">Experience</h2>
+                    <h2 class="section-h" data-i18n="projects_title">Projects</h2>
                     <div class="rule"></div>
                 </div>
 
-                <!-- GAME JAMS -->
-                <details class="exp-cat">
-                    <summary>
-                        <strong data-i18n="exp_jams">Game Jams</strong>
-                        <span class="chev">▶</span>
-                    </summary>
+                <!-- Featured (my 3 main projects) -->
+                <div class="project-sub">
+                    <h3 data-i18n="featured_title">Featured</h3>
+                    <div class="projgrid auto">
 
+                        <!-- Project 1 -->
+                        <article class="projcard">
 
+                            <div class="tbd" data-i18n="featured_p1_tag">Procedural Generation / AI</div>
 
-
-
-                    <div class="exp-list scroll-wrap" id="gamejamList">
-
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong data-i18n="exp_gmtk_title">GMTK 2024 — Programmer</strong>
-                                <span class="right">48h</span>
+                            <strong data-i18n="featured_p1_title">Procedural Maze & Pathfinding</strong>
+                            <div class="proj-thumb">
+                                <img src="assets/projects/Maze.png" alt="Procedural Maze Preview">
                             </div>
-                            <div class="muted" data-i18n="exp_gmtk_desc">Unity • C# • Input/Camera</div>
 
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/gmtk-2024">GitHub</a>
+                            <p class="muted" data-i18n="featured_p1_desc"></p>
+
+                            <div class="btn-row">
+                                <a class="btn" target="_blank"
+                                   href="https://github.com/ValencoSilva/procedural-maze-pathfinding"
+                                   data-i18n="btn_github">
+                                    GitHub
+                                </a>
                             </div>
-                        </div>
+                        </article>
 
+                        <!-- Project 2 -->
+                        <article class="projcard">
+                            <div class="tbd" data-i18n="featured_p2_tag">AI / Java</div>
 
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong data-i18n="exp_ld55_title">Ludum Dare 55 — Solo</strong>
-                                <span class="right">72h</span>
+                            <strong data-i18n="featured_p2_title">Robocode AI Battle Bot</strong>
+                            <div class="proj-thumb">
+                                <img src="assets/projects/Robo.png" alt="Robocode">
                             </div>
-                            <div class="muted" data-i18n="exp_ld55_desc">Procedural waves • AI</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/ld55">GitHub</a>
-                            </div>
-                        </div>
 
-                        <!-- Duplicate .exp-item to add more jams -->
+                            <p class="muted" data-i18n="featured_p2_desc"></p>
+
+                            <div class="btn-row">
+                                <a class="btn" target="_blank"
+                                   href="https://github.com/ValencoSilva/robocode"
+                                   data-i18n="btn_github">
+                                    GitHub
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Project 3 -->
+                        <article class="projcard">
+                            <div class="tbd" data-i18n="featured_p3_tag">Gameplay / Unity</div>
+
+                            <strong data-i18n="featured_p3_title">Tic Tac Toe 3D</strong>
+                            <div class="proj-thumb">
+                                <img src="assets/projects/TicTacToe.png" alt="Tic tac toePreview">
+                            </div>
+
+                            <p class="muted" data-i18n="featured_p3_desc"></p>
+
+                            <div class="btn-row">
+                                <a class="btn" target="_blank"
+                                   href="https://github.com/ValencoSilva/TicTacToe3D"
+                                   data-i18n="btn_github">
+                                    GitHub
+                                </a>
+                            </div>
+                        </article>
+
                     </div>
-                </details>
+                </div>
 
 
-                <!-- COLLEGE PROJECTS -->
-                <details class="exp-cat">
-                    <summary>
-                        <strong data-i18n="exp_college">College Projects</strong>
-                        <span class="chev">▶</span>
-                    </summary>
+                <!-- College Projects -->
+                <div class="project-sub">
+                    <details class="collapsible">
+                        <summary>
+                            <strong data-i18n="college_projects_title">College Projects</strong>
+                            <span class="chev">▶</span>
+                        </summary>
 
+                        <div class="inner">
+                            <div class="projgrid auto">
 
+                                <!-- Falling Blocks -->
+                                <article class="projcard">
+                                    <strong>Fall'n Blocks</strong>
 
+                                    <p class="muted" data-i18n="college_fallingblocks_sub">
+                                        Tetris-like 3D • ECS/entt • ImGui — C++ / Vulkan
+                                    </p>
+                                    <div class="proj-thumb">
+                                        <img src="assets/projects/Falling.png" alt="Falling Blocks Preview">
+                                    </div>
+                                    <div class="btn-row">
+                                        <a class="btn" target="_blank"
+                                           href="https://github.com/ValencoSilva/FallingBlocks_Vulkan"
+                                           data-i18n="btn_github">
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </article>
 
+                                <!-- TCP / UDP Chat Server -->
+                                <article class="projcard">
+                                    <strong>TCP / UDP Chat Server</strong>
+                                    <p class="muted" data-i18n="college_chat_sub">
+                                        Networking • TCP + UDP • BSD / Winsock — C++
+                                    </p>
+                                    <div class="proj-thumb">
+                                        <img src="assets/projects/Net.png" alt="UDP Chat Server Preview">
+                                    </div>
+                                    <div class="btn-row">
+                                        <a class="btn" target="_blank"
+                                           href="https://github.com/ValencoSilva/cpp-networked-chat-server"
+                                           data-i18n="btn_github">
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </article>
 
-                    <div class="exp-list scroll-wrap" id="collegeList">
+                                <!-- Irminsul -->
+                                <article class="projcard">
+                                    <strong>Irminsul — 3D Shooter</strong>
+                                    <p class="muted" data-i18n="college_irminsul_sub">
+                                        Shooter systems • Weapons & Powers • Boss AI — Unity / C#
+                                    </p>
+                                    <div class="proj-thumb">
+                                        <img src="assets/projects/irmo.png" alt="Irmusol Preview">
+                                    </div>
+                                    <div class="btn-row">
+                                        <a class="btn" target="_blank"
+                                           href="https://github.com/ValencoSilva/Project-Portfolio-Campus"
+                                           data-i18n="btn_github">
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </article>
 
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong data-i18n="exp_college_t1">Capstone — Wave Shooter</strong>
-                                <span class="right" data-i18n="exp_college_r1">Unity</span>
-                            </div>
-                            <div class="muted" data-i18n="exp_college_d1">Weapons/Upgrades • Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/wave-shooter">GitHub</a>
-                            </div>
-                        </div>
-
-
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Fall’n blocks</strong>
-                                <span class="right">C++/Vulkan</span>
-                            </div>
-                            <div class="muted">Tetris-like 3D • ECS/entt • ImGui</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/falln-blocks">GitHub</a>
-                            </div>
-                        </div>
-
-                        <!-- EXEMPLE TO ADD MORE -->
-                        <!--
-                        <div class="exp-item">
-                          <div class="row">
-                            <strong>Physics Sandbox</strong>
-                            <span class="right">Unity</span>
-                          </div>
-                          <div class="muted">ECS • Joints • Debug Tools</div>
-                          <div class="links" style="margin-top:8px">
-                            <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
-                          </div>
-                        </div>
-                        -->
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Physics Sandbox</strong>
-                                <span class="right">Unity</span>
-                            </div>
-                            <div class="muted">ECS • Joints • Debug Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
-                            </div>
-                        </div>
-
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Physics Sandbox</strong>
-                                <span class="right">Unity</span>
-                            </div>
-                            <div class="muted">ECS • Joints • Debug Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
                             </div>
                         </div>
+                    </details>
+                </div>
 
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Physics Sandbox</strong>
-                                <span class="right">Unity</span>
-                            </div>
-                            <div class="muted">ECS • Joints • Debug Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+
+
+                <!-- Learning Log -->
+                <div class="project-sub">
+                    <details class="collapsible">
+                        <summary>
+                            <strong data-i18n="learning_log_title">Learning Log</strong>
+                            <span class="chev">▶</span>
+                        </summary>
+
+                        <div class="inner">
+                            <div class="projgrid auto">
+
+                                <!-- Item 1 -->
+                                <article class="projcard">
+                                    <strong>Hero Ballers – UI/UX Documentation</strong>
+                                    <p class="muted" data-i18n="learning_hero_ballers_desc">
+                                        UI/UX design documentation covering personas, design system,
+                                        menu layouts, and champion selection flow.
+                                        Created in Figma with a strong focus on clarity,
+                                        usability, and visual consistency.
+                                    </p>
+                                    <div class="btn-row">
+                                        <a class="btn" target="_blank"
+                                           href="https://github.com/ValencoSilva/hero-ballers-ui-ux-docs"
+                                           data-i18n="btn_github">
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <!-- Item 2 -->
+                                <article class="projcard">
+                                    <strong>Voxel Rendering Study</strong>
+                                    <p class="muted" data-i18n="learning_voxel_desc">
+                                        Technical study on voxel-based rendering focused on vertex generation,
+                                        chunk creation, and spatial data organization.
+                                        Explores foundational concepts for procedural worlds and voxel engines.
+                                    </p>
+                                    <div class="btn-row">
+                                        <a class="btn" target="_blank"
+                                           href="https://github.com/ValencoSilva/Portfolio"
+                                           data-i18n="btn_github">
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </article>
+
                             </div>
                         </div>
+                    </details>
+                </div>
 
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Physics Sandbox</strong>
-                                <span class="right">Unity</span>
-                            </div>
-                            <div class="muted">ECS • Joints • Debug Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
-                            </div>
+
+
+
+                <!-- MINI GAMES -->
+                <section id="minigames">
+                    <style>
+                        #minigames .games-grid {
+                            display: grid;
+                            gap: 18px;
+                            grid-template-columns: 1fr;
+                        }
+
+                        @media (min-width: 900px) {
+                            #minigames .games-grid {
+                                grid-template-columns: repeat(3,1fr);
+                            }
+                        }
+
+                        .game-card {
+                            background: var(--card);
+                            border: 1px solid var(--muted);
+                            border-radius: 16px;
+                            box-shadow: var(--shadow);
+                            padding: 14px;
+                        }
+
+                            .game-card h3 {
+                                margin: 0 0 8px;
+                                font-size: 18px;
+                            }
+
+                        .game-ui {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin: 8px 0 10px;
+                        }
+
+                            .game-ui .btn {
+                                padding: 6px 10px;
+                                border-radius: 10px;
+                                border: 1px solid var(--muted);
+                                background: var(--bg-soft);
+                            }
+
+                                .game-ui .btn.primary {
+                                    background: linear-gradient(180deg,#22d3ee,#8b5cf6);
+                                    color: #0b1220;
+                                    font-weight: 700;
+                                    border: none;
+                                }
+
+                        .stat {
+                            color: var(--text-dim);
+                        }
+
+                        .game-wrap {
+                            background: #0c1321;
+                            border: 1px solid var(--muted);
+                            border-radius: 12px;
+                            padding: 8px;
+                        }
+
+                        canvas.minigame {
+                            width: 100%;
+                            height: auto;
+                            display: block;
+                            image-rendering: pixelated;
+                            border-radius: 8px;
+                            background: #0b1220;
+                        }
+
+                        canvas.minigame {
+                            touch-action: none;
+                        }
+                    </style>
+
+                    <div class="container">
+                        <div class="section-title">
+                            <h2 class="section-h" data-i18n="minigames_title">Mini Games</h2>
+                            <div class="rule"></div>
                         </div>
 
-                        <div class="exp-item">
-                            <div class="row">
-                                <strong>Physics Sandbox</strong>
-                                <span class="right">Unity</span>
+                        <div class="games-grid">
+
+                            <!-- SNAKE -->
+                            <div class="game-card">
+                                <h3 data-i18n="game_snake">Snake</h3>
+                                <div class="game-ui">
+                                    <button id="snStart" class="btn primary" data-i18n="start_label">Start</button>
+                                    <button id="snReset" class="btn" data-i18n="reset_label">Reset</button>
+                                    <span class="stat"><span data-i18n="score_label">Score</span>: <b id="snScore">0</b></span>
+                                </div>
+                                <div class="game-wrap">
+                                    <canvas id="snake" class="minigame" width="400" height="280" aria-label="Snake"></canvas>
+                                </div>
+                                <p class="muted small">← ↑ → ↓</p>
                             </div>
-                            <div class="muted">ECS • Joints • Debug Tools</div>
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/physics-sandbox">GitHub</a>
+
+                            <!-- PONG (Player vs AI) -->
+                            <div class="game-card">
+                                <h3 data-i18n="game_pong">Pong (vs AI)</h3>
+                                <div class="game-ui">
+                                    <button id="pgStart" class="btn primary" data-i18n="start_label">Start</button>
+                                    <button id="pgReset" class="btn" data-i18n="reset_label">Reset</button>
+                                    <span class="stat"><span data-i18n="score_label">Score</span>: <b id="pgScore">0–0</b></span>
+                                </div>
+                                <div class="game-wrap">
+                                    <canvas id="pong" class="minigame" width="420" height="280" aria-label="Pong"></canvas>
+                                </div>
+                                <p class="muted small" data-i18n="pong_hint">Move with mouse or W/S</p>
                             </div>
+
+                            <!-- DODGE -->
+                            <div class="game-card">
+                                <h3 data-i18n="game_dodge">Dodge</h3>
+                                <div class="game-ui">
+                                    <button id="dgStart" class="btn primary" data-i18n="start_label">Start</button>
+                                    <button id="dgReset" class="btn" data-i18n="reset_label">Reset</button>
+                                    <span class="stat"><span data-i18n="time_label">Time</span>: <b id="dgTime">0.0s</b></span>
+                                </div>
+                                <div class="game-wrap">
+                                    <canvas id="dodge" class="minigame" width="420" height="280" aria-label="Dodge"></canvas>
+                                </div>
+                                <p class="muted small">W A S D</p>
+                            </div>
+
                         </div>
                     </div>
-                </details>
-
-                <!-- INTERNSHIP (with scroll) -->
-                <details class="exp-cat">
-                    <summary>
-                        <strong data-i18n="exp_internship">Internship</strong>
-                        <span class="chev">▶</span>
-                    </summary>
+                </section>
 
 
+                <!-- EXPERIENCE -->
+                <section id="experience">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2 class="section-h" data-i18n="exp_title">Experience</h2>
+                            <div class="rule"></div>
+                        </div>
 
-                    <!-- Scrollable content -->
-                    <div class="exp-list scroll-wrap" id="internList">
-                        <!-- ITEM: DJDE -->
-                        <div class="exp-item">
+                        <div class="xp-card">
                             <div class="row">
                                 <strong data-i18n="intern_role">Prompt Engineer / Gameplay Programmer — DJDE</strong>
                                 <span class="right">05/2023 – 02/2025</span>
                             </div>
+
                             <div class="muted" data-i18n="intern_location">Rio de Janeiro, Brazil</div>
 
-                            <p style="margin-top:8px" data-i18n="intern_summary">
-                                Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support…
+                            <p class="muted" style="margin-top:8px" data-i18n="intern_summary">
+                                Prototyping a 3D tic-tac-toe in Unity/C# built 100% with ChatGPT-4 support, focusing on prompt engineering mastery, faster iteration, and documenting technical decisions.
                             </p>
 
-                            <ul style="margin-top:8px; padding-left:18px; color:var(--text-dim)">
-                                <li><b data-i18n="intern_b1_label">Prompt engineering (GPT-4):</b> <span data-i18n="intern_b1_text">…</span></li>
-                                <li><b data-i18n="intern_b2_label">Gameplay:</b> <span data-i18n="intern_b2_text">…</span></li>
-                                <li><b data-i18n="intern_b3_label">UI/UX:</b> <span data-i18n="intern_b3_text">…</span></li>
-                                <li><b data-i18n="intern_b4_label">Integration & Quality:</b> <span data-i18n="intern_b4_text">…</span></li>
+                            <ul class="muted" style="margin-top:8px; padding-left:18px">
+                                <li><b data-i18n="intern_b1_label">Prompt engineering (GPT-4):</b> <span data-i18n="intern_b1_text">Created effective prompts, reviewed/adapted AI-suggested code, documented decisions, and integrated solutions into Unity.</span></li>
+                                <li><b data-i18n="intern_b2_label">Gameplay:</b> <span data-i18n="intern_b2_text">Implemented turn loop, move validation, win/draw checks, and a power-up system in C#.</span></li>
+                                <li><b data-i18n="intern_b3_label">UI/UX:</b> <span data-i18n="intern_b3_text">Built menus, HUD, and visual feedback; wired UI events to game state.</span></li>
+                                <li><b data-i18n="intern_b4_label">Integration & Quality:</b> <span data-i18n="intern_b4_text">Organized scenes/prefabs, standardized scripts, reviewed PRs, and kept testing builds stable.</span></li>
                             </ul>
 
                             <div class="muted" style="margin-top:8px" data-i18n="intern_stack">
                                 Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs
                             </div>
 
-                            <div class="links" style="margin-top:8px">
-                                <a class="btn btn-outline" target="_blank" href="https://github.com/SEU_USUARIO/seu-repo-djde">GitHub</a>
+                            <div class="btn-row" style="margin-top:10px">
+                                <a class="btn btn-outline" target="_blank" href="https://github.com/ValencoSilva/TicTacToe3D">GitHub</a>
                             </div>
                         </div>
-
-                        <!-- Duplicate .exp-item to add more internships -->
                     </div>
-                </details>
+                </section>
+
 
 
 
@@ -1762,7 +1677,7 @@
                         if (url) a.href = url; else a.style.display = 'none';
                     });
                 </script>
-        </section>
+</section>
 
 
         <section id="resume">
@@ -1805,8 +1720,8 @@
             <div class="container contact">
                 <div class="card pad">
                     <h2 class="title-md" data-i18n="contact_title">Contact</h2>
-                    <form name="contact" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="contact">
+                    <form action="https://formspree.io/f/xlgwrvdv" method="POST">
+
 
                         <div class="row">
                             <input class="input" name="name"
@@ -1842,7 +1757,7 @@
                     </div>
                     <div class="card pad">
                         <h3 class="title-md" data-i18n="contact_note">Note</h3>
-                        <p class="muted" data-i18n="contact_note_p">I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.</p>
+                        <p class="muted" data-i18n="contact_note_p">I usually respond within 12 hours. For faster replies, mention the project scope, platform, and timeline.</p>
                     </div>
                 </div>
             </div>
@@ -1877,10 +1792,10 @@
     </div>
 
     <script>
-        // Year
+       
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Theme toggle
+        
         const root = document.documentElement;
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) { root.setAttribute('data-theme', savedTheme); }
@@ -1890,8 +1805,7 @@
             localStorage.setItem('theme', t);
         });
 
-        // Simple i18n
-        // --- BASE: textos compartilhados entre os idiomas ----------------------------
+        
         const BASE = {
             // Nav
             nav_home: 'Home',
@@ -1972,8 +1886,12 @@
             exp_title: 'Experience',
             exp_jams: 'Game Jams',
             exp_gamejams: 'Game Jams',
-            exp_college: 'College Projects',
-            exp_university: 'College Projects',
+            college_projects_title: "College Projects",
+
+            college_fallingblocks_sub: "Tetris-like 3D • ECS/entt • ImGui — C++ / Vulkan",
+            college_chat_sub: "Networking • TCP + UDP • BSD / Winsock — C++",
+            college_irminsul_sub: "Shooter systems • Weapons & Powers • Boss AI — Unity / C#",
+
             exp_internship: 'Internship',
 
             // Experience — Intern
@@ -2006,7 +1924,7 @@
             contact_alt: 'Elsewhere',
             contact_note: 'Note',
             contact_note_p:
-                'I usually respond within 24 hours. For faster replies, mention the project scope, platform, and timeline.',
+                'I usually respond within 12 hours. For faster replies, mention the project scope, platform, and timeline.',
             contact_send: 'Send',
             contact_name_ph: 'Name',
             contact_email_ph: 'Email',
@@ -2025,6 +1943,42 @@
             score_label: 'Score',
             time_label: 'Time',
             pong_hint: 'Move with mouse or W/S',
+
+            featured_title: 'Featured',
+            featured_placeholder: 'TBD — title / image / links',
+            featured_p1: 'Project #1',
+            featured_p2: 'Project #2',
+            featured_p3: 'Project #3',
+            featured_desc: 'Short description of the featured project.',
+
+            
+            "learning_log_title": "Learning Log",
+            "learning_hero_ballers_desc": "UI/UX design documentation covering personas, design system, menu layouts, and champion selection flow. Created in Figma with a strong focus on clarity, usability, and visual consistency.",
+            "learning_voxel_desc": "Technical study on voxel-based rendering focused on vertex generation, chunk creation, and spatial data organization. Explores foundational concepts for procedural worlds and voxel engines.",
+
+            "btn_github": "GitHub",
+            learning_rendering_desc: 'Matrices • Lighting • Starfield — C++/Vulkan',
+            learning_editor_desc: 'Unity Editor • Productivity • Debug UI',
+            featured_title: "Featured",
+
+            //mexer depois
+            featured_p1_tag: "Procedural Generation / AI",
+            featured_p1_title: "Procedural Maze & Pathfinding",
+            featured_p1_desc:
+                "Procedural maze generation system with configurable seed support, integrated AI pathfinding, and grid-based navigation logic. Focused on algorithms, determinism, and gameplay-ready AI behavior.",
+
+            featured_p2_tag: "AI / Java",
+            featured_p2_title: "Robocode AI Battle Bot",
+            featured_p2_desc:
+                "AI-controlled battle bot developed in Java for the Robocode platform. Achieved first place in a university AI battle competition, focusing on decision-making, movement prediction, and combat strategies.",
+
+            featured_p3_tag: "Gameplay / Unity",
+            featured_p3_title: "Tic Tac Toe 3D",
+            featured_p3_desc:
+                "3D Tic-Tac-Toe game built in Unity featuring special power-ups, local multiplayer, and AI opponent modes. Focused on turn-based gameplay systems and game state management.",
+
+
+
         };
 
         // --- EN overrides
@@ -2103,8 +2057,13 @@
                 'Renderer educativo con PBR básico, post-proceso y marcadores de perfilado. Enfoque en abstracciones limpias.',
 
             exp_title: 'Experiencia',
-            exp_college: 'Proyectos universitarios',
-            exp_university: 'Proyectos universitarios',
+            college_projects_title: "Proyectos Universitarios",
+
+            college_fallingblocks_sub: "Tetris 3D • ECS/entt • ImGui — C++ / Vulkan",
+            college_chat_sub: "Redes • TCP + UDP • BSD / Winsock — C++",
+            college_irminsul_sub: "Sistemas de shooter • Armas y poderes • IA de jefes — Unity / C#",
+
+
             exp_internship: 'Pasantía',
 
             resume_title: 'CV',
@@ -2116,7 +2075,7 @@
             contact_alt: 'Redes',
             contact_note: 'Nota',
             contact_note_p:
-                'Suelo responder en 24h. Para respuestas rápidas, menciona alcance, plataforma y tiempo.',
+                'Suelo responder en 12h. Para respuestas rápidas, menciona alcance, plataforma y tiempo.',
             contact_send: 'Enviar',
             contact_name_ph: 'Nombre',
             contact_email_ph: 'Correo',
@@ -2152,6 +2111,41 @@
                 'Organización de escenas/prefabs, estandarización de scripts, revisión de PRs y builds estables para pruebas.',
             intern_stack:
                 'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
+
+            featured_title: 'Destacados',
+            featured_placeholder: 'Por completar — título / imagen / links',
+            featured_p1: 'Proyecto #1',
+            featured_p2: 'Proyecto #2',
+            featured_p3: 'Proyecto #3',
+            featured_desc: 'Breve descripción del proyecto principal.',
+            
+
+            "learning_log_title": "Registro de Aprendizaje",
+            "learning_hero_ballers_desc": "Documentación de diseño UI/UX para un proyecto de juego, que cubre definición de personas, sistema de diseño, menús y flujo de selección de campeones. Desarrollado en Figma con enfoque en claridad, usabilidad y consistencia visual.",
+            "learning_voxel_desc": "Estudio técnico sobre renderizado basado en vóxeles, enfocado en la generación de vértices, creación de chunks y organización espacial de datos. Explora conceptos fundamentales para mundos procedurales y motores voxel.",
+            "btn_github": "GitHub",
+            learning_rendering_desc: 'Matrices • Iluminación • Starfield — C++/Vulkan',
+            learning_editor_desc: 'Editor de Unity • Productividad • Debug UI',
+            //mexer depois 
+            featured_title: "Destacados",
+
+            featured_p1_tag: "Generación Procedural / IA",
+            featured_p1_title: "Laberinto Procedural y Pathfinding",
+            featured_p1_desc:
+                "Sistema de generación procedural de laberintos con soporte de seed configurable, IA con pathfinding integrado y navegación basada en grid. Enfocado en algoritmos, determinismo y comportamiento de IA listo para gameplay.",
+
+            featured_p2_tag: "IA / Java",
+            featured_p2_title: "Robocode — Bot de Batalla con IA",
+            featured_p2_desc:
+                "Bot de batalla controlado por IA desarrollado en Java para la plataforma Robocode. Primer lugar en una competencia universitaria de batallas de IA, enfocado en toma de decisiones, predicción de movimiento y estrategias de combate.",
+
+            featured_p3_tag: "Gameplay / Unity",
+            featured_p3_title: "Tres en Raya 3D",
+            featured_p3_desc:
+                "Juego de tres en raya 3D desarrollado en Unity con sistema de poderes, multijugador local y oponente controlado por IA. Enfocado en sistemas de gameplay por turnos y gestión del estado del juego.",
+
+
+          
         };
 
         // --- PT overrides ------------------------------------------------------------
@@ -2220,8 +2214,12 @@
                 'Renderer de estudo com PBR básico, pós-processamento e marcadores de profile. Foco em abstrações limpas.',
 
             exp_title: 'Experiência',
-            exp_college: 'Projetos de Faculdade',
-            exp_university: 'Projetos universitários',
+            college_projects_title: "Projetos de Faculdade",
+
+            college_fallingblocks_sub: "Tetris 3D • ECS/entt • ImGui — C++ / Vulkan",
+            college_chat_sub: "Redes • TCP + UDP • BSD / Winsock — C++",
+            college_irminsul_sub: "Sistemas de shooter • Armas e poderes • IA de chefes — Unity / C#",
+
             exp_internship: 'Estágio',
 
             resume_title: 'Currículo',
@@ -2233,7 +2231,7 @@
             contact_alt: 'Outros',
             contact_note: 'Aviso',
             contact_note_p:
-                'Respondo em 24h. Para resposta mais rápida, indique escopo, plataforma e prazo.',
+                'Respondo em ate 12h. Para resposta mais rápida, indique escopo, plataforma e prazo.',
             contact_send: 'Enviar',
             contact_name_ph: 'Nome',
             contact_email_ph: 'Email',
@@ -2269,6 +2267,42 @@
                 'Organização de cenas/prefabs, padronização de scripts, revisão de PRs e builds estáveis para testes.',
             intern_stack:
                 'Unity • C# • ChatGPT/GPT-4 • Excel • Git/GitHub • Discord • Google Meet • Canva • Google Docs',
+
+            featured_title: 'Destaques',
+            featured_placeholder: 'A preencher — título / imagem / links',
+            featured_p1: 'Projeto #1',
+            featured_p2: 'Projeto #2',
+            featured_p3: 'Projeto #3',
+            featured_desc: 'Breve descrição do projeto principal.',
+          
+
+            "learning_log_title": "Registro de Aprendizado",
+            "learning_hero_ballers_desc": "Documentação de design UI/UX para um projeto de jogo, abordando definição de personas, design system, menus e fluxo de seleção de campeões. Desenvolvido no Figma com foco em clareza, usabilidade e consistência visual.",
+            "learning_voxel_desc": "Estudo técnico sobre renderização baseada em voxels, com foco na geração de vértices, criação de chunks e organização espacial de dados. Explora conceitos fundamentais para mundos procedurais e engines voxel.",
+
+            "btn_github": "GitHub",
+            learning_rendering_desc: 'Matrizes • Iluminação • Starfield — C++/Vulkan',
+            learning_editor_desc: 'Editor do Unity • Produtividade • Debug UI',
+
+            //mexer depois
+            featured_title: "Destaques",
+
+            featured_p1_tag: "Geração Procedural / IA",
+            featured_p1_title: "Labirinto Procedural & Pathfinding",
+            featured_p1_desc:
+                "Sistema de geração procedural de labirintos com suporte a seed configurável, IA com pathfinding integrado e navegação baseada em grid. Foco em algoritmos, determinismo e comportamento de IA pronto para gameplay.",
+
+            featured_p2_tag: "IA / Java",
+            featured_p2_title: "Robocode — Bot de Batalha com IA",
+            featured_p2_desc:
+                "Bot de batalha controlado por IA desenvolvido em Java para a plataforma Robocode. Primeiro lugar em uma competição universitária de batalhas de IA, com foco em tomada de decisão, previsão de movimento e estratégias de combate.",
+
+            featured_p3_tag: "Gameplay / Unity",
+            featured_p3_title: "Jogo da Velha 3D",
+            featured_p3_desc:
+                "Jogo da velha 3D desenvolvido em Unity com sistema de poderes, multiplayer local e oponente controlado por IA. Foco em sistemas de gameplay por turno e gerenciamento de estado do jogo.",
+
+
         };
 
 
@@ -2399,12 +2433,9 @@
             requestAnimationFrame(tick);
         }
         tick();
-        // ===== Resume / CV: verificação do arquivo e fallback =====
+       
 
-        // Se seu arquivo tiver espaço no nome, use esta linha em vez da de baixo:
-        // const CV_PATH = 'assets/ValencoGuelereESilvaResume%20(1).pdf';
-
-        const CV_PATH = 'assets/ValencoGuelereESilvaResume.pdf'; // recomendado (sem espaço)
+        const CV_PATH = 'assets/ValencoGuelereESilvaResume.pdf'; 
 
         async function verifyCV() {
             const link = document.getElementById('cvLink');
@@ -2431,18 +2462,16 @@
                     }
                 }
             } catch {
-                /* Se o host bloquear HEAD, o link do HTML já abre o PDF */
+               
             }
         }
 
-        // roda a verificação ao carregar
+        
         verifyCV();
 
     </script>
     <script>
-        /* ============================================
-           HiDPI helper (retina) + logical size tracking
-           ============================================ */
+      
         function fitHiDPICanvas(c, logicalW, logicalH) {
             const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
             c.width = Math.floor(logicalW * dpr);
@@ -2451,7 +2480,7 @@
             c.style.height = logicalH + 'px';
             const ctx = c.getContext('2d');
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            // Guardar tamanhos lógicos para a lógica do jogo
+           
             c._lw = logicalW;
             c._lh = logicalH;
             c._dpr = dpr;
@@ -2498,7 +2527,7 @@
                 snake.unshift(head);
                 if (head.x === food.x && head.y === food.y) {
                     score++; document.getElementById('snScore').textContent = score; placeFood();
-                    step = Math.max(55, step - 3); // acelera um pouco a cada comida
+                    step = Math.max(55, step - 3); 
                 } else {
                     snake.pop();
                 }
@@ -2513,7 +2542,7 @@
                 snake.forEach(p => ctx.fillRect(p.x * grid + 1, p.y * grid + 1, grid - 2, grid - 2));
             }
 
-            // Teclado
+            // keyboard
             window.addEventListener('keydown', e => {
                 const k = e.key.toLowerCase();
                 if ((k === 'arrowup' || k === 'w') && dir.y !== 1) dir = { x: 0, y: -1 };
@@ -2570,21 +2599,21 @@
             }
 
             function tick() {
-                // bola
+                // ball
                 B.x += B.vx; B.y += B.vy;
                 if (B.y < B.r || B.y > H - B.r) B.vy *= -1;
 
-                // colisões
+                // collison
                 const hit = (px, py, pw, ph) => (B.x - B.r < px + pw && B.x + B.r > px && B.y > py && B.y < py + ph);
                 if (hit(P.x, P.y, P.w, P.h)) { B.vx = Math.abs(B.vx) * 1.05; B.vy += (B.y - (P.y + P.h / 2)) * 0.03; }
                 if (hit(A.x, A.y, A.w, A.h)) { B.vx = -Math.abs(B.vx) * 1.05; B.vy += (B.y - (A.y + A.h / 2)) * 0.03; }
 
-                // IA segue a bola suavemente
+                // IA
                 const targetY = B.y - A.h / 2;
                 A.y += Math.sign(targetY - A.y) * A.s;
                 A.y = Math.max(0, Math.min(H - A.h, A.y));
 
-                // pontuação
+                // score
                 if (B.x < 0) { aiScore++; updateScore(); resetBall(1); }
                 if (B.x > W) { pScore++; updateScore(); resetBall(-1); }
 
@@ -2596,7 +2625,7 @@
             function start() { if (running) return; running = true; raf = requestAnimationFrame(tick); }
             function stop() { running = false; cancelAnimationFrame(raf); }
 
-            // Mouse + teclado
+            // Mouse + keyboard
             function setPlayerYFromClientY(clientY) {
                 const rect = c.getBoundingClientRect();
                 const y = clientY - rect.top;
@@ -2679,11 +2708,11 @@
                 ctx.fillStyle = "#f472b6"; enemies.forEach(e => ctx.fillRect(e.x, e.y, e.w, e.h));
             }
 
-            // Teclado
+            // keyboard
             window.addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; });
             window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 
-            // Touch: seguir o dedo (mais natural no celular)
+           
             function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
             function setPlayerFromTouch(t) {
                 const rect = c.getBoundingClientRect();
@@ -2700,9 +2729,7 @@
             reset();
         })();
 
-        /* ============================================
-           Global: pausar quando fora de vista/aba
-           ============================================ */
+      
         (function pauseWhenHidden() {
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
